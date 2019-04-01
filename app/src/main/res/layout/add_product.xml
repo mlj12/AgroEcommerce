@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddProduct">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:id="@+id/import_picture"
+        android:layout_height="200dp"
+        android:src="@drawable/baseline_insert_photo_white_18dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"/>
+
+    <EditText
+        android:id="@+id/product_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:padding="10dp"
+        android:layout_below="@id/import_picture"
+        android:inputType="text"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/input_text"
+        />
+
+    <EditText
+        android:id="@+id/product_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:layout_below="@id/product_name"
+        android:inputType="text"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:maxLines="5"
+        android:singleLine="false"
+        android:background="@drawable/input_text"
+        />
+
+    <LinearLayout
+        android:id="@+id/product_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/product_description"
+        android:weightSum="3"
+        >
+
+        <EditText
+            android:id="@+id/available_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantity"
+            android:layout_below="@id/product_description"
+            android:inputType="number"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_text"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+
+
+            />
+
+        <EditText
+            android:id="@+id/product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_description"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/available_inventory"
+            android:hint="Price"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:background="@drawable/input_text"
+            android:padding="10dp"
+
+
+            android:singleLine="true"
+
+
+            />
+
+        <EditText
+            android:id="@+id/currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_description"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/product_price"
+            android:hint="Currency"
+            android:inputType="text"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:background="@drawable/input_text"
+
+            android:singleLine="true"
+            />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/shipping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Shipping Details"
+        android:layout_below="@id/product_container"
+        android:inputType="text"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:maxLines="5"
+        android:singleLine="false"
+        android:background="@drawable/input_text"
+        />
+
+    <Button
+
+        android:id="@+id/add_product_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:layout_below="@id/product_container"
+        android:layout_marginTop="100dp"
+        android:text="Add a product"
+
+        />
+</RelativeLayout>

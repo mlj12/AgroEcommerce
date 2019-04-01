@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "1029690068728",
+    "firebase_url": "https://agro-trade-centre-55b83.firebaseio.com",
+    "project_id": "agro-trade-centre-55b83",
+    "storage_bucket": "agro-trade-centre-55b83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029690068728:android:f453180a4cb605cd",
+        "android_client_info": {
+          "package_name": "uk.aber.ac.agroecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029690068728-cfeenierloen27t9gl0vucnhmlmjib1c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.aber.ac.agroecommerce",
+            "certificate_hash": "b48d9157955811434194215bc25a42282ed00f75"
+          }
+        },
+        {
+          "client_id": "1029690068728-pug630khdh4ipp3h1qkcmdp8n6btouqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXzdZlzZzkjNRcBmzHAcVE8SDo6CLRrrI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029690068728-pug630khdh4ipp3h1qkcmdp8n6btouqc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029690068728:android:e32f114a4a89a6b5",
+        "android_client_info": {
+          "package_name": "uk.aber.ac.atc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029690068728-067l5hnn4hmga1hjood90pt6d7a9u05j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.aber.ac.atc",
+            "certificate_hash": "b48d9157955811434194215bc25a42282ed00f75"
+          }
+        },
+        {
+          "client_id": "1029690068728-pug630khdh4ipp3h1qkcmdp8n6btouqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXzdZlzZzkjNRcBmzHAcVE8SDo6CLRrrI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029690068728-pug630khdh4ipp3h1qkcmdp8n6btouqc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

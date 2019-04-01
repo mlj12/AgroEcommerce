@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item
+        android:id="@+id/drawer_home"
+        android:icon="@drawable/baseline_home_white_18dp"
+        android:title="Home" />
+    <item
+        android:id="@+id/drawer_purchases"
+        android:icon="@drawable/baseline_account_balance_wallet_white_18dp"
+        android:title="Purchases" />
+
+    <item
+        android:id="@+id/drawer_selling"
+        android:icon="@drawable/baseline_shopping_basket_white_18dp"
+        android:title="Selling" />
+
+    <item
+        android:id="@+id/drawer_cart"
+        android:icon="@drawable/cart"
+        android:title="Cart" />
+    <item
+        android:id="@+id/drawer_myAccount"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="My Account" />
+
+</menu>
