@@ -34,7 +34,7 @@ public class AddProduct extends AppCompatActivity {
     private Button AddNewProductButton;
     private ImageView InputProductImage;
     private EditText product_name,product_description,product_price,product_shipping,
-            product_quantity,product_currency;
+            product_quantity;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private String productRandomKey, downloadImageUrl;
@@ -61,7 +61,6 @@ public class AddProduct extends AppCompatActivity {
         product_description = (EditText) findViewById(R.id.product_description);
         product_quantity = (EditText) findViewById(R.id.available_inventory);
         product_price = (EditText) findViewById(R.id.product_price);
-        product_currency = (EditText) findViewById(R.id.currency);
         product_shipping = (EditText) findViewById(R.id.shipping);
 
         loadingBar = new ProgressDialog(this);
@@ -115,7 +114,7 @@ public class AddProduct extends AppCompatActivity {
         price = product_price.getText().toString();
         pName = product_name.getText().toString();
         shipping =product_shipping.getText().toString();
-        currency = product_currency.getText().toString();
+
         quantity = product_quantity.getText().toString();
 
 
@@ -260,7 +259,6 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("Price", price);
         productMap.put("Quantity", quantity);
         productMap.put("Currency", currency);
-        productMap.put("Shipping", shipping);
         productMap.put("Name", pName);
 
 

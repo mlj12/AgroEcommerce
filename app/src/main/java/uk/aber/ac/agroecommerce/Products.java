@@ -2,17 +2,17 @@ package uk.aber.ac.agroecommerce;
 
 public class Products
 {
-    private String pname, description, price, image, category, pid, date, time;
+    private String Name, description, Price, image, category, pid, date, time;
 
     public Products()
     {
 
     }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time) {
-        this.pname = pname;
+    public Products(String Name, String description, String Price, String image, String category, String pid, String date, String time) {
+        this.Name = Name;
         this.description = description;
-        this.price = price;
+        this.Price = Price;
         this.image = image;
         this.category = category;
         this.pid = pid;
@@ -20,13 +20,14 @@ public class Products
         this.time = time;
     }
 
+    // variable return is what the name field in Firebase -> Should be the same.
 
-    public String getPname() {
-        return pname;
+    public String getName() {
+        return Name;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
+    public void setname(String Name) {
+        this.Name = Name;
     }
 
     public String getDescription() {
@@ -38,11 +39,11 @@ public class Products
     }
 
     public String getPrice() {
-        return price;
+        return Price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setPrice(String Price) {
+        this.Price = Price;
     }
 
     public String getImage() {
