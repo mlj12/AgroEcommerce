@@ -12,6 +12,9 @@
         <activity android:name=".Profile"></activity>
         <activity android:name=".AddProduct" />
         <activity android:name=".Product_Category" />
+        <activity android:name=".Register" />
+        <activity android:name=".LogIn" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

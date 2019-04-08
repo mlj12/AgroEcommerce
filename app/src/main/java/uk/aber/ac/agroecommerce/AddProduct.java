@@ -30,7 +30,7 @@ import java.util.HashMap;
 
 public class AddProduct extends AppCompatActivity {
 
-    private String CategoryName, description, price, pName,quantity,shipping,currency,saveCurrentDate, saveCurrentTime;
+    private String CategoryName, description, price, pName,quantity,shipping,saveCurrentDate, saveCurrentTime;
     private Button AddNewProductButton;
     private ImageView InputProductImage;
     private EditText product_name,product_description,product_price,product_shipping,
@@ -139,10 +139,7 @@ public class AddProduct extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product shipping...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(currency))
-        {
-            Toast.makeText(this, "Please write product currency...", Toast.LENGTH_SHORT).show();
-        }
+
         else if (TextUtils.isEmpty(quantity))
         {
             Toast.makeText(this, "Please write product quantity...", Toast.LENGTH_SHORT).show();
@@ -162,10 +159,7 @@ public class AddProduct extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product shipping...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(currency))
-        {
-            Toast.makeText(this, "Please write product currency...", Toast.LENGTH_SHORT).show();
-        }
+
         else if (TextUtils.isEmpty(quantity))
         {
             Toast.makeText(this, "Please write product quantity...", Toast.LENGTH_SHORT).show();
@@ -258,7 +252,7 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("category", CategoryName);
         productMap.put("Price", price);
         productMap.put("Quantity", quantity);
-        productMap.put("Currency", currency);
+
         productMap.put("Name", pName);
 
 
