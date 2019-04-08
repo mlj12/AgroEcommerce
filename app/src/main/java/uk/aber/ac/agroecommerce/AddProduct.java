@@ -57,8 +57,8 @@ public class AddProduct extends AppCompatActivity {
 
         AddNewProductButton = (Button) findViewById(R.id.add_product_btn);
         InputProductImage = (ImageView) findViewById(R.id.import_picture);
-        product_name = (EditText) findViewById(R.id.product_name);
-        product_description = (EditText) findViewById(R.id.product_description);
+        product_name = (EditText) findViewById(R.id.p_name);
+        product_description = (EditText) findViewById(R.id.p_description);
         product_quantity = (EditText) findViewById(R.id.available_inventory);
         product_price = (EditText) findViewById(R.id.product_price);
         product_shipping = (EditText) findViewById(R.id.shipping);

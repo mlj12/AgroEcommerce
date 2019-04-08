@@ -20,13 +20,12 @@ public class Products
         this.time = time;
     }
 
-    // variable return is what the name field in Firebase -> Should be the same.
 
     public String getName() {
         return Name;
     }
 
-    public void setname(String Name) {
+    public void setName(String Name) {
         this.Name = Name;
     }
 
