@@ -31,8 +31,8 @@ public class LogIn extends AppCompatActivity {
         txtEmailLogin = (EditText) findViewById(R.id.email_login);
         txtPwd = (EditText) findViewById(R.id.password_login);
         signInBtn = (Button) findViewById(R.id.log_in_button);
-        firebaseAuth = FirebaseAuth.getInstance();
 
+        firebaseAuth = FirebaseAuth.getInstance();
 
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override

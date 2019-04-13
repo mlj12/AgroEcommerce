@@ -25,7 +25,10 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
+
+import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+   private Query q;
 
 
     @Override
@@ -40,7 +44,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        ProductsRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Products");
+       q = FirebaseDatabase.getInstance().getReference("Products").orderByChild("Price");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -128,6 +133,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
+
+
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -140,8 +148,91 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+        if (id == R.id.action_sortbyprice) {
+
+            FirebaseRecyclerOptions<Products> options =
+                    new FirebaseRecyclerOptions.Builder<Products>()
+                            .setQuery(ProductsRef, Products.class)
+                            .build();
+
+
+            FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
+                    new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+                        @Override
+                        protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model)
+                        {
+                            holder.txtProductName.setText(model.getName());
+                            holder.txtProductDescription.setText(model.getDescription());
+                            holder.txtProductPrice.setText("Price = " + model.getPrice() + "$");
+                            Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(MainActivity.this,ProductDetail.class);
+                                    intent.putExtra("pid",model.getPid()); //get specific id when user clicks on an item picture
+                                    startActivity(intent);
+                                }
+                            });
+
+                        }
+
+                        @NonNull
+                        @Override
+                        public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+                        {
+                            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+                            ProductViewHolder holder = new ProductViewHolder(view);
+                            return holder;
+                        }
+                    };
+            recyclerView.setAdapter(adapter);
+            adapter.startListening();
+
+
+        }
+        if (id == R.id.action_sortbyprice) {
+
+                FirebaseRecyclerOptions<Products> options =
+                        new FirebaseRecyclerOptions.Builder<Products>()
+                                .setQuery(q, Products.class)
+                                .build();
+
+
+                FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
+                        new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+                            @Override
+                            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model)
+                            {
+                                holder.txtProductName.setText(model.getName());
+                                holder.txtProductDescription.setText(model.getDescription());
+                                holder.txtProductPrice.setText("Price = " + model.getPrice() + "$");
+                                Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(MainActivity.this,ProductDetail.class);
+                                        intent.putExtra("pid",model.getPid()); //get specific id when user clicks on an item picture
+                                        startActivity(intent);
+                                    }
+                                });
+
+                            }
+
+                            @NonNull
+                            @Override
+                            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+                            {
+                                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+                                ProductViewHolder holder = new ProductViewHolder(view);
+                                return holder;
+                            }
+                        };
+                recyclerView.setAdapter(adapter);
+                adapter.startListening();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -167,12 +258,18 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, Register.class);
             startActivity(intent);
         } else if (id == R.id.drawer_myAccount) {
-            Intent intent = new Intent(MainActivity.this, Profile.class);
+            Intent intent = new Intent(MainActivity.this, Account.class);
             startActivity(intent);
         } else if (id == R.id.drawer_purchases) {
 
         }
+        else if (id == R.id.drawer_logout) {
 
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

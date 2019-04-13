@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,6 +42,8 @@ public class AddProduct extends AppCompatActivity {
     private StorageReference ProductImagesRef;
     private DatabaseReference productsRef;
     private ProgressDialog loadingBar;
+    private FirebaseAuth firebaseAuth;
+    private String pid;
 
 
     @Override
@@ -53,7 +56,7 @@ public class AddProduct extends AppCompatActivity {
         CategoryName = getIntent().getExtras().get("category").toString();
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
+         pid = FirebaseAuth.getInstance().getUid();
 
         AddNewProductButton = (Button) findViewById(R.id.add_product_btn);
         InputProductImage = (ImageView) findViewById(R.id.import_picture);
@@ -190,7 +193,7 @@ public class AddProduct extends AppCompatActivity {
         productRandomKey = saveCurrentDate + saveCurrentTime;
 
 
-        final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
+        final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + pid+ ".jpg");
 
         final UploadTask uploadTask = filePath.putFile(ImageUri);
 
@@ -244,7 +247,7 @@ public class AddProduct extends AppCompatActivity {
     private void SaveProductInfoToDatabase()
     {
         HashMap<String, Object> productMap = new HashMap<>();
-        productMap.put("pid", productRandomKey);
+        productMap.put("pid", pid);
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description",description);

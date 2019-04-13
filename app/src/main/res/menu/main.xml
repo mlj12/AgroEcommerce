@@ -2,8 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_sortbyprice"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Price Low to High"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_most_recent"
+        android:orderInCategory="100"
+        android:title="Most Recent"
+        app:showAsAction="never" />
+
 </menu>

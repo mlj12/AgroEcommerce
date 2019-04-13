@@ -26,5 +26,9 @@
         android:id="@+id/drawer_myAccount"
         android:icon="@drawable/ic_menu_manage"
         android:title="My Account" />
+    <item
+        android:id="@+id/drawer_logout"
+        android:icon="@drawable/common_full_open_on_phone"
+        android:title="Sign Out" />
 
 </menu>
