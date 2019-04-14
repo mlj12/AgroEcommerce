@@ -44,6 +44,7 @@ public class AddProduct extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private FirebaseAuth firebaseAuth;
     private String pid;
+    private String key;
 
 
     @Override
@@ -57,6 +58,9 @@ public class AddProduct extends AppCompatActivity {
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
          pid = FirebaseAuth.getInstance().getUid();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        key = database.getReference("Products").push().getKey();
 
         AddNewProductButton = (Button) findViewById(R.id.add_product_btn);
         InputProductImage = (ImageView) findViewById(R.id.import_picture);
@@ -190,7 +194,7 @@ public class AddProduct extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
 
-        productRandomKey = saveCurrentDate + saveCurrentTime;
+
 
 
         final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + pid+ ".jpg");
@@ -259,7 +263,7 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("Name", pName);
 
 
-        productsRef.child(productRandomKey).updateChildren(productMap)
+        productsRef.child(key).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task)

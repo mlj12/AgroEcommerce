@@ -7,7 +7,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, String location, String type, String picture, String email, String password) {
+    public User(String name, String location, String picture, String email ) {
         this.name = name;
         this.location = location;
         this.type = type;
@@ -32,13 +32,13 @@ public class User {
         this.location = location;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
+//    public String getType() {
+//        return type;
+//    }
+//
+//    public void setType(String type) {
+//        this.type = type;
+//    }
 
     public String getPicture() {
         return picture;
@@ -55,12 +55,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 }

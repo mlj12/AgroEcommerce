@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:id="@+id/import_picture"
         android:layout_height="wrap_content"
-        android:padding="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/baseline_insert_photo_white_18dp"/>
