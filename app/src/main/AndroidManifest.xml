@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".Account"></activity>
+        <activity android:name=".Splash"></activity>
+        <activity android:name=".Cart" />
+        <activity android:name=".Account" />
         <activity android:name=".ProductDetail" />
         <activity android:name=".Profile" />
         <activity android:name=".AddProduct" />

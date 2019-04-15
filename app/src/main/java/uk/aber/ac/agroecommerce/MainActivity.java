@@ -2,6 +2,7 @@ package uk.aber.ac.agroecommerce;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -33,16 +34,19 @@ import io.paperdb.Paper;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-   private Query q;
+    private Query q;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
 
         ProductsRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Products");
        q = FirebaseDatabase.getInstance().getReference("Products").orderByChild("Price");
