@@ -7,16 +7,18 @@
     tools:context=".Cart">
 
     <RelativeLayout
+
+        android:id="@+id/relativeLayout_1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-      android:background="@color/colorPrimary"
+      android:background="@color/colorAccent"
         android:layout_alignParentTop="true"
 
         >
 
        <TextView
 
-           android:id="@+id/Total_cartList"
+           android:id="@+id/cart_total_amount"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:text="Total ="
@@ -27,13 +29,17 @@
            android:gravity="top"/>
 
 
-
-
-
-
-
     </RelativeLayout>
 
+    <android.support.v7.widget.RecyclerView
+       android:id="@+id/recycler_cartlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativeLayout_1"
+        android:layout_above="@+id/proceed_to_checkout_btn"
+        >
+
+    </android.support.v7.widget.RecyclerView>
 
     <Button
         android:id="@+id/proceed_to_checkout_btn"
@@ -43,20 +49,9 @@
         android:text="Proceed to Checkout"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
-        android:layout_above="@id/cart_list_recyclerview"
+
 
         />
 
-
-    <android.support.v7.widget.RecyclerView
-
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cart_list_recyclerview"
-        >
-
-
-    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

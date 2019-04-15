@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -37,6 +39,8 @@ public class ProductDetail extends AppCompatActivity {
     private String productID ="";
     private String uid;
     private String saveCurrentDate, saveCurrentTime;
+    private StorageReference productImagesRef;
+    private String downloadImageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,7 @@ public class ProductDetail extends AppCompatActivity {
         saveCurrentTime = currentDate.format(calForDate.getTime());
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+        ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
 
         final HashMap<String, Object> cartMap = new HashMap<>();
 
@@ -98,6 +103,7 @@ public class ProductDetail extends AppCompatActivity {
         cartMap.put("quantity",quantity_btn.getNumber());
         cartMap.put("date",saveCurrentDate);
         cartMap.put("time",saveCurrentTime);
+        cartMap.put("Image",downloadImageUrl);
 
         cartListRef.child("User View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
