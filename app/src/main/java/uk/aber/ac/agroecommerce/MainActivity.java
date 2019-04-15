@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity
                             @Override
                             public void onClick(View v) {
                                 Intent intent = new Intent(MainActivity.this,ProductDetail.class);
-                                intent.putExtra("pid",model.getPid()); //get specific id when user clicks on an item picture
+                                intent.putExtra("pid",model.getPid()); //get specific id of product when user clicks on an item picture
                                 startActivity(intent);
                             }
                         });

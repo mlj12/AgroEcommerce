@@ -44,7 +44,7 @@ public class AddProduct extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private FirebaseAuth firebaseAuth;
     private String pid;
-    private String key;
+
 
 
     @Override
@@ -57,10 +57,10 @@ public class AddProduct extends AppCompatActivity {
         CategoryName = getIntent().getExtras().get("category").toString();
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-         pid = FirebaseAuth.getInstance().getUid();
+       //  pid = FirebaseAuth.getInstance().getUid();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        key = database.getReference("Products").push().getKey();
+        pid = database.getReference("Products").push().getKey();
 
         AddNewProductButton = (Button) findViewById(R.id.add_product_btn);
         InputProductImage = (ImageView) findViewById(R.id.import_picture);
@@ -263,7 +263,7 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("Name", pName);
 
 
-        productsRef.child(key).updateChildren(productMap)
+        productsRef.child(pid).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task)

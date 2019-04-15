@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class ProductDetail extends AppCompatActivity {
 
     private Button add_to_cart_btn;
-    private ImageButton closeTextBtn;
+    private ImageView closeTextBtn;
     private ImageView productImage;
     private ElegantNumberButton quantity_btn;
     private TextView productPrice,productDescription,productName;
@@ -39,7 +39,7 @@ public class ProductDetail extends AppCompatActivity {
 
 
         add_to_cart_btn = (Button) findViewById(R.id.add_to_cart_btn);
-        closeTextBtn = (ImageButton) findViewById(R.id.close_settings_btn);
+        closeTextBtn = (ImageView) findViewById(R.id.close_settings_btn);
         productImage = (ImageView) findViewById(R.id.p_image);
         quantity_btn = (ElegantNumberButton) findViewById(R.id.quantity_btn);
         productDescription = (TextView) findViewById(R.id.p_description);
@@ -50,12 +50,12 @@ public class ProductDetail extends AppCompatActivity {
         //Retrieve data from product id
         getProductDetails(productID);
 
-        add_to_cart_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToCart();
-            }
-        });
+//        add_to_cart_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addToCart();
+//            }
+//        });
         closeTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -65,34 +65,34 @@ public class ProductDetail extends AppCompatActivity {
         });
     }
 
-    private void addToCart() {
+//    private void addToCart() {
+//
+//       String saveCurrentTime, saveCurrentDate;
+//
+//        Calendar callForDate = Calendar.getInstance();
+//        SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
+//        saveCurrentDate = currentDate.format(callForDate.getTime());
+//
+//        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
+//        saveCurrentTime = currentDate.format(callForDate.getTime());
+//
+//        DatabaseReference cartlistRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+//
+//        //Add product  to Cart List child in database
+//
+//        final HashMap<String,Object> cartMap = new HashMap<>();
+//        cartMap.put("pid",productID);
+//        cartMap.put("name",productName.getText().toString());
+//        cartMap.put("price",productPrice.getText().toString());
+//        cartMap.put("description",productDescription.getText().toString());
+//        cartMap.put("time",saveCurrentTime);
+//        cartMap.put("quantity",quantity_btn.getNumber());
+//        cartMap.put("date",currentDate);
+//
+//        cartlistRef.child("User View").child(Prevalent.currentOnlineUser.getEmail()).child("Products").child(productID);
+//
 
-       String saveCurrentTime, saveCurrentDate;
-
-        Calendar callForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
-        saveCurrentDate = currentDate.format(callForDate.getTime());
-
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
-        saveCurrentTime = currentDate.format(callForDate.getTime());
-
-        DatabaseReference cartlistRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-
-        //Add product  to Cart List child in database
-
-        final HashMap<String,Object> cartMap = new HashMap<>();
-        cartMap.put("pid",productID);
-        cartMap.put("name",productName.getText().toString());
-        cartMap.put("price",productPrice.getText().toString());
-        cartMap.put("description",productDescription.getText().toString());
-        cartMap.put("time",saveCurrentTime);
-        cartMap.put("quantity",quantity_btn.getNumber());
-        cartMap.put("date",currentDate);
-
-        cartlistRef.child("User View").child(Prevalent.currentOnlineUser.getEmail()).child("Products").child(productID);
-
-
-    }
+//    }
 
     private void getProductDetails(String productID) {
 
