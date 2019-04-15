@@ -135,8 +135,8 @@ public class Account extends AppCompatActivity {
 
 
     private void StoreProductInformation() {
-        loadingBar.setTitle("Add New Product");
-        loadingBar.setMessage("Please wait while we are adding your product.");
+        loadingBar.setTitle("Updating Account");
+        loadingBar.setMessage("Please wait while we are updating your account.");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
@@ -164,7 +164,7 @@ public class Account extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(Account.this, "Product Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Account.this, "User Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override

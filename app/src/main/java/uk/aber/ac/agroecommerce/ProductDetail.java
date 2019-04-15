@@ -1,6 +1,8 @@
 package uk.aber.ac.agroecommerce;
 
+import android.content.Intent;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +10,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +35,8 @@ public class ProductDetail extends AppCompatActivity {
     private ElegantNumberButton quantity_btn;
     private TextView productPrice,productDescription,productName;
     private String productID ="";
+    private String uid;
+    private String saveCurrentDate, saveCurrentTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +45,12 @@ public class ProductDetail extends AppCompatActivity {
 
         productID = getIntent().getStringExtra("pid");
 
+       uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        add_to_cart_btn = (Button) findViewById(R.id.add_to_cart_btn);
+        add_to_cart_btn = (Button) findViewById(R.id.add_to_cartlist_btn);
         closeTextBtn = (ImageView) findViewById(R.id.close_settings_btn);
         productImage = (ImageView) findViewById(R.id.p_image);
-        quantity_btn = (ElegantNumberButton) findViewById(R.id.quantity_btn);
+        quantity_btn = (ElegantNumberButton) findViewById(R.id.elegant_quantity_btn);
         productDescription = (TextView) findViewById(R.id.p_description);
         productPrice = (TextView) findViewById(R.id.p_price);
         productName = (TextView) findViewById(R.id.p_name);
@@ -50,12 +59,14 @@ public class ProductDetail extends AppCompatActivity {
         //Retrieve data from product id
         getProductDetails(productID);
 
-//        add_to_cart_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                addToCart();
-//            }
-//        });
+        add_to_cart_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addingToCartList();
+            }
+        });
+
+      
         closeTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -65,41 +76,60 @@ public class ProductDetail extends AppCompatActivity {
         });
     }
 
-//    private void addToCart() {
-//
-//       String saveCurrentTime, saveCurrentDate;
-//
-//        Calendar callForDate = Calendar.getInstance();
-//        SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
-//        saveCurrentDate = currentDate.format(callForDate.getTime());
-//
-//        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
-//        saveCurrentTime = currentDate.format(callForDate.getTime());
-//
-//        DatabaseReference cartlistRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-//
-//        //Add product  to Cart List child in database
-//
-//        final HashMap<String,Object> cartMap = new HashMap<>();
-//        cartMap.put("pid",productID);
-//        cartMap.put("name",productName.getText().toString());
-//        cartMap.put("price",productPrice.getText().toString());
-//        cartMap.put("description",productDescription.getText().toString());
-//        cartMap.put("time",saveCurrentTime);
-//        cartMap.put("quantity",quantity_btn.getNumber());
-//        cartMap.put("date",currentDate);
-//
-//        cartlistRef.child("User View").child(Prevalent.currentOnlineUser.getEmail()).child("Products").child(productID);
-//
+    private void addingToCartList() {
 
-//    }
+        String saveCurrentTime,saveCurrentDate;
 
-    private void getProductDetails(String productID) {
+        Calendar calForDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("ddmm,yyyy");
+        saveCurrentDate = currentDate.format(calForDate.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        saveCurrentTime = currentDate.format(calForDate.getTime());
+
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+
+        final HashMap<String, Object> cartMap = new HashMap<>();
+
+        cartMap.put("pid",productID);
+        cartMap.put("pname",productName.getText().toString());
+        cartMap.put("price",productPrice.getText().toString());
+        cartMap.put("description",productDescription.getText().toString());
+        cartMap.put("quantity",quantity_btn.getNumber());
+        cartMap.put("date",saveCurrentDate);
+        cartMap.put("time",saveCurrentTime);
+
+        cartListRef.child("User View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+
+                    cartListRef.child("Seller View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            Toast.makeText(ProductDetail.this, "Product has been added to cart", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ProductDetail.this,ProductDetail.class);
+                            startActivity(intent);
+                        }
+                    });
+
+                }
+            }
+        });
+
+
+    }
+
+
+    private void getProductDetails(final String productID) {
 
         DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child("Products");
         productRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+                System.out.print("id is equal to" + productID);
 
                 if(dataSnapshot.exists()){
 
