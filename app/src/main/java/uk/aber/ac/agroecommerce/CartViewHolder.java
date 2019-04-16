@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
     public TextView txtProductName, txtProductDescription, txtProductPrice,txtProductQuantity;
-    public ImageView imageView;
+    public ImageView imageViewCart;
     public ItemClickListner listner;
 
 
@@ -19,7 +19,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public CartViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        imageView = (ImageView) itemView.findViewById(R.id.p_image_cart);
+        imageViewCart = (ImageView) itemView.findViewById(R.id.p_image_cart);
         txtProductName = (TextView) itemView.findViewById(R.id.p_name_cart);
         txtProductDescription = (TextView) itemView.findViewById(R.id.p_description_cart);
         txtProductPrice = (TextView) itemView.findViewById(R.id.p_price_cart);

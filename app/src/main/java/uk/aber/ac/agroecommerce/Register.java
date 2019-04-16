@@ -22,7 +22,7 @@ public class Register extends AppCompatActivity {
     private EditText txtPassword;
     private FirebaseAuth firebaseAuth;
     private Button registerBtn;
-
+    private Button loginBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +30,7 @@ public class Register extends AppCompatActivity {
         txtEmailAddress = (EditText) findViewById(R.id.email);
         txtPassword = (EditText) findViewById(R.id.password);
         registerBtn = (Button) findViewById(R.id.register_button);
+       loginBtn = (Button) findViewById(R.id.log_in_button_registerpage);
         firebaseAuth = FirebaseAuth.getInstance();
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +38,18 @@ public class Register extends AppCompatActivity {
             public void onClick(View view)
             {
                 createAccount();
+            }
+        });
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+
+
+                Intent i = new Intent(Register.this, LogIn.class);
+                startActivity(i);
+
             }
         });
 

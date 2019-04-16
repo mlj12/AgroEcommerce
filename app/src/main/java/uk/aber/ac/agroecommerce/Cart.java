@@ -64,7 +64,7 @@ public class Cart extends AppCompatActivity {
                         holder.txtProductDescription.setText(model.getDescription());
                         holder.txtProductQuantity.setText(model.getQuantity());
                         holder.txtProductPrice.setText("Price = " + model.getPrice() + "$");
-                        Picasso.get().load(model.getImage()).into(holder.imageView);
+                        Picasso.get().load(model.getImage()).into(holder.imageViewCart);
 
 
                     }

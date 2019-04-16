@@ -101,7 +101,7 @@
 
             <Button
                 android:id="@+id/register_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttons"
@@ -109,6 +109,19 @@
                 android:text="Register"
                 android:padding="10dp"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/log_in_button_registerpage"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttons"
+                android:layout_marginTop="16dp"
+                android:text="Log in"
+                android:padding="10dp"
+                android:textStyle="bold"
+
+                />
 
         </LinearLayout>
     </ScrollView>

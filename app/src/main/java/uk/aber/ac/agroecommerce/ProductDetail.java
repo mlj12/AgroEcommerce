@@ -1,10 +1,12 @@
 package uk.aber.ac.agroecommerce;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -20,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -39,7 +42,7 @@ public class ProductDetail extends AppCompatActivity {
     private String productID ="";
     private String uid;
     private String saveCurrentDate, saveCurrentTime;
-    private StorageReference productImagesRef;
+
     private String downloadImageUrl;
 
     @Override
@@ -88,11 +91,12 @@ public class ProductDetail extends AppCompatActivity {
         SimpleDateFormat currentDate = new SimpleDateFormat("ddmm,yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
         saveCurrentTime = currentDate.format(calForDate.getTime());
 
+        // creating instance for database
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-        ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
+
 
         final HashMap<String, Object> cartMap = new HashMap<>();
 
@@ -103,7 +107,7 @@ public class ProductDetail extends AppCompatActivity {
         cartMap.put("quantity",quantity_btn.getNumber());
         cartMap.put("date",saveCurrentDate);
         cartMap.put("time",saveCurrentTime);
-        cartMap.put("Image",downloadImageUrl);
+
 
         cartListRef.child("User View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -135,7 +139,7 @@ public class ProductDetail extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                System.out.print("id is equal to" + productID);
+               // System.out.print("id is equal to" + productID);
 
                 if(dataSnapshot.exists()){
 
@@ -144,6 +148,7 @@ public class ProductDetail extends AppCompatActivity {
                     productPrice.setText(products.getPrice());
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
+
                 }
             }
 
