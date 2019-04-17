@@ -250,6 +250,9 @@ public class AddProduct extends AppCompatActivity {
 
     private void SaveProductInfoToDatabase()
     {
+
+       int pricey = Integer.parseInt(price);
+
         HashMap<String, Object> productMap = new HashMap<>();
         productMap.put("pid", pid);
         productMap.put("date", saveCurrentDate);
@@ -257,7 +260,7 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("description",description);
         productMap.put("image", downloadImageUrl);
         productMap.put("category", CategoryName);
-        productMap.put("Price", price);
+        productMap.put("Price", pricey);
         productMap.put("Quantity", quantity);
 
         productMap.put("Name", pName);
@@ -270,7 +273,7 @@ public class AddProduct extends AppCompatActivity {
                     {
                         if (task.isSuccessful())
                         {
-                            Intent intent = new Intent(AddProduct.this, MainActivity.class);
+                            Intent intent = new Intent(AddProduct.this,Home2.class);
                             startActivity(intent);
 
                             System.out.print(intent);

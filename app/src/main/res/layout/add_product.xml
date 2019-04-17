@@ -7,9 +7,9 @@
     tools:context=".AddProduct">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:id="@+id/import_picture"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/baseline_insert_photo_white_18dp"/>
