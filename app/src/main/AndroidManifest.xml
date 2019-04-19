@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".Chat"></activity>
+        <activity android:name=".ConfirmOrder"></activity>
         <activity
             android:name=".Home2"
             android:label="@string/title_activity_home2"

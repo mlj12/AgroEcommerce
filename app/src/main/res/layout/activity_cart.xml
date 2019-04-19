@@ -6,13 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".Cart">
 
+
+    <RelativeLayout
+
+        android:id="@+id/back_to_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/colorAccent">
+
+
+        <ImageView
+            android:id="@+id/back_to_home_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back to Home"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/back_to_home_btn"
+            />
+
+
+
+    </RelativeLayout>
     <RelativeLayout
 
         android:id="@+id/relativeLayout_1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
       android:background="@color/colorAccent"
-        android:layout_alignParentTop="true"
+        android:layout_above="@id/proceed_to_checkout_btn"
 
         >
 
@@ -25,7 +53,7 @@
            android:textSize="20sp"
         android:background="@color/colorAccent"
            android:textColor="@color/white"
-           android:textAlignment="center"
+           android:textAlignment="gravity"
            android:gravity="top"/>
 
 
@@ -35,8 +63,8 @@
        android:id="@+id/recycler_cartlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/relativeLayout_1"
-        android:layout_above="@+id/proceed_to_checkout_btn"
+        android:layout_below="@+id/back_to_home"
+        android:layout_above="@+id/relativeLayout_1"
         >
 
     </android.support.v7.widget.RecyclerView>
@@ -46,9 +74,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        android:text="Proceed to Checkout"
+        android:text="Proceed to checkout"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
+        android:layout_marginTop="10dp"
 
 
         />

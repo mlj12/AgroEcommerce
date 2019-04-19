@@ -32,6 +32,8 @@ public class Cart extends AppCompatActivity {
     private TextView totalAmountInCart;
     private DatabaseReference cartRef;
     private String uid;
+    private int totalAmount =0;
+
 
 
     @Override
@@ -47,6 +49,18 @@ public class Cart extends AppCompatActivity {
         totalAmountInCart = (TextView) findViewById(R.id.cart_total_amount);
         cartRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View");
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        proceedToCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                totalAmountInCart.setText(String.valueOf("Total Price =$" + totalAmount));
+                Intent intent = new Intent(Cart.this,ConfirmOrder.class);
+                intent.putExtra("Total Price", String.valueOf(totalAmount) ); // sending total amount to the next activity
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
@@ -70,6 +84,14 @@ public class Cart extends AppCompatActivity {
                         holder.txtProductQuantity.setText(model.getQuantity());
                         holder.txtProductPrice.setText("Price = " + model.getPrice() + "$");
                         Picasso.get().load(model.getImage()).into(holder.imageViewCart);
+
+                        //calculate total price
+
+                        int totalPriceProduct = ((Integer.valueOf(model.getPrice())))*Integer.valueOf(model.getQuantity()); // converting string to integer
+
+                        //add total price of 1 product to total amount
+
+                        totalAmount= totalPriceProduct + totalAmount;
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
