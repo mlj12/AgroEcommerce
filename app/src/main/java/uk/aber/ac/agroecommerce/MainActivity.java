@@ -1,9 +1,11 @@
 package uk.aber.ac.agroecommerce;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+
+
+
         new Handler().postDelayed(new Runnable() {
 
 // Using handler with postDelayed called runnable run method
@@ -24,13 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
             public void run() {
 
-                Intent i = new Intent(MainActivity.this, LogIn.class);
+
+
+                Intent i = new Intent(MainActivity.this, Register.class);
 
                 startActivity(i);
 
                 // close this activity
 
-                finish();
+            //    finish();
 
             }
 

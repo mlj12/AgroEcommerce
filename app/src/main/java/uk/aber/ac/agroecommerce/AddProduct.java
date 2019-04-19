@@ -57,7 +57,7 @@ public class AddProduct extends AppCompatActivity {
         CategoryName = getIntent().getExtras().get("category").toString();
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-       //  pid = FirebaseAuth.getInstance().getUid();
+        //  pid = FirebaseAuth.getInstance().getUid();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         pid = database.getReference("Products").push().getKey();
@@ -251,7 +251,6 @@ public class AddProduct extends AppCompatActivity {
     private void SaveProductInfoToDatabase()
     {
 
-       int pricey = Integer.parseInt(price);
 
         HashMap<String, Object> productMap = new HashMap<>();
         productMap.put("pid", pid);
@@ -260,7 +259,7 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("description",description);
         productMap.put("image", downloadImageUrl);
         productMap.put("category", CategoryName);
-        productMap.put("Price", pricey);
+        productMap.put("Price", price);
         productMap.put("Quantity", quantity);
 
         productMap.put("Name", pName);

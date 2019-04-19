@@ -2,15 +2,14 @@ package uk.aber.ac.agroecommerce;
 
 public class Products
 {
-    private String Name, description, image, category, pid, date, time;
-    private int Price;
+    private String Name, description, Price, image, category, pid, date, time;
 
     public Products()
     {
 
     }
 
-    public Products(String Name, String description, int Price, String image, String category, String pid, String date, String time) {
+    public Products(String Name, String description, String Price, String image, String category, String pid, String date, String time) {
         this.Name = Name;
         this.description = description;
         this.Price = Price;
@@ -38,11 +37,11 @@ public class Products
         this.description = description;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return Price;
     }
 
-    public void setPrice(int Price) {
+    public void setPrice(String Price) {
         this.Price = Price;
     }
 

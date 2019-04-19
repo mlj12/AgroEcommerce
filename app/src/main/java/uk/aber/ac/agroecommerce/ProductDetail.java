@@ -1,5 +1,6 @@
 package uk.aber.ac.agroecommerce;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.provider.ContactsContract;
@@ -38,8 +39,8 @@ public class ProductDetail extends AppCompatActivity {
     private ImageView closeTextBtn;
     private ImageView productImage;
     private ElegantNumberButton quantity_btn;
-    private TextView productPrice,productDescription,productName;
-    private String productID ="";
+    private TextView productPrice, productDescription, productName;
+    private String productID = "";
     private String uid;
     private String saveCurrentDate, saveCurrentTime;
 
@@ -52,7 +53,7 @@ public class ProductDetail extends AppCompatActivity {
 
         productID = getIntent().getStringExtra("pid");
 
-       uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         add_to_cart_btn = (Button) findViewById(R.id.add_to_cartlist_btn);
         closeTextBtn = (ImageView) findViewById(R.id.close_settings_btn);
@@ -73,11 +74,10 @@ public class ProductDetail extends AppCompatActivity {
             }
         });
 
-      
+
         closeTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 finish();
             }
         });
@@ -85,7 +85,9 @@ public class ProductDetail extends AppCompatActivity {
 
     private void addingToCartList() {
 
-        String saveCurrentTime,saveCurrentDate;
+        String saveCurrentTime, saveCurrentDate;
+        final ProgressDialog progressDialog = ProgressDialog.show(ProductDetail.this, "Wait", "Adding to cart..", true);
+
 
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("ddmm,yyyy");
@@ -100,26 +102,27 @@ public class ProductDetail extends AppCompatActivity {
 
         final HashMap<String, Object> cartMap = new HashMap<>();
 
-        cartMap.put("pid",productID);
-        cartMap.put("pname",productName.getText().toString());
-        cartMap.put("price",productPrice.getText().toString());
-        cartMap.put("description",productDescription.getText().toString());
-        cartMap.put("quantity",quantity_btn.getNumber());
-        cartMap.put("date",saveCurrentDate);
-        cartMap.put("time",saveCurrentTime);
+        cartMap.put("pid", productID);
+        cartMap.put("pname", productName.getText().toString());
+        cartMap.put("price", productPrice.getText().toString());
+        cartMap.put("description", productDescription.getText().toString());
+        cartMap.put("quantity", quantity_btn.getNumber());
+        cartMap.put("date", saveCurrentDate);
+        cartMap.put("time", saveCurrentTime);
 
 
         cartListRef.child("User View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
 
                     cartListRef.child("Seller View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            progressDialog.dismiss();
 
                             Toast.makeText(ProductDetail.this, "Product has been added to cart", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ProductDetail.this,ProductDetail.class);
+                            Intent intent = new Intent(ProductDetail.this, ProductDetail.class);
                             startActivity(intent);
                         }
                     });
@@ -139,9 +142,9 @@ public class ProductDetail extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-               // System.out.print("id is equal to" + productID);
+                // System.out.print("id is equal to" + productID);
 
-                if(dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
 
                     Products products = dataSnapshot.getValue(Products.class);
                     productName.setText(products.getName());
