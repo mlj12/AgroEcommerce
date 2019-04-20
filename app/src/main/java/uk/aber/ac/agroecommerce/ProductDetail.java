@@ -83,6 +83,8 @@ public class ProductDetail extends AppCompatActivity {
         });
     }
 
+    // When clicking on add to cart button, adding the items in the cart list.
+
     private void addingToCartList() {
 
         String saveCurrentTime, saveCurrentDate;
@@ -134,7 +136,7 @@ public class ProductDetail extends AppCompatActivity {
 
     }
 
-
+// working
     private void getProductDetails(final String productID) {
 
         DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child("Products");
@@ -148,7 +150,7 @@ public class ProductDetail extends AppCompatActivity {
 
                     Products products = dataSnapshot.getValue(Products.class);
                     productName.setText(products.getName());
-                    productPrice.setText(products.getPrice());
+                    productPrice.setText(String.valueOf(products.getPrice())); // Should convert int price from model to String.
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
 

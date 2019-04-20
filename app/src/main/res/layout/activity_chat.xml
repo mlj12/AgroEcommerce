@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chat">
+
+
+  <android.support.design.widget.FloatingActionButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:src="@drawable/ic_send_black_24dp"
+      android:id="@+id/send_message_btn"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
+      />
+
+  <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_toLeftOf="@id/send_message_btn"
+      android:layout_alignParentBottom="true"
+      >
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+        android:id="@+id/input_message"
+          android:hint="Enter message"
+
+           />
+
+
+  </android.support.design.widget.TextInputLayout>
+
+    <ListView
+
+        android:id="@+id/list_of_messages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/send_message_btn"
+        android:layout_marginBottom="10dp"
+        android:dividerHeight="10dp"
+        android:layout_marginHorizontal="5dp"
+
+        >
+
+
+
+    </ListView>
+
+</RelativeLayout>

@@ -31,7 +31,8 @@ import java.util.HashMap;
 
 public class AddProduct extends AppCompatActivity {
 
-    private String CategoryName, description, price, pName,quantity,shipping,saveCurrentDate, saveCurrentTime;
+    private String CategoryName, description, pName,quantity,shipping,saveCurrentDate, saveCurrentTime;
+    private int price;
     private Button AddNewProductButton;
     private ImageView InputProductImage;
     private EditText product_name,product_description,product_price,product_shipping,
@@ -118,7 +119,7 @@ public class AddProduct extends AppCompatActivity {
     private void ValidateProductData()
     {
         description = product_description.getText().toString();
-        price = product_price.getText().toString();
+        price = Integer.valueOf(product_price.getText().toString());
         pName = product_name.getText().toString();
         shipping =product_shipping.getText().toString();
 
@@ -134,10 +135,10 @@ public class AddProduct extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product description...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(price))
-        {
-            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
-        }
+//        else if (TextUtils.isEmpty(price))
+//        {
+//            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
+//        }
         else if (TextUtils.isEmpty(pName))
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
@@ -154,10 +155,10 @@ public class AddProduct extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product description...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(price))
-        {
-            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
-        }
+//        else if (TextUtils.isEmpty(price))
+//        {
+//            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
+//        }
         else if (TextUtils.isEmpty(pName))
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
@@ -259,7 +260,7 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("description",description);
         productMap.put("image", downloadImageUrl);
         productMap.put("category", CategoryName);
-        productMap.put("Price", price);
+        productMap.put("price", price);
         productMap.put("Quantity", quantity);
 
         productMap.put("Name", pName);

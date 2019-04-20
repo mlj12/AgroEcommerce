@@ -54,15 +54,17 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                totalAmountInCart.setText(String.valueOf("Total Price =$" + totalAmount));
-                Intent intent = new Intent(Cart.this,ConfirmOrder.class);
-                intent.putExtra("Total Price", String.valueOf(totalAmount) ); // sending total amount to the next activity
+//                totalAmountInCart.setText(String.valueOf("Total Price =$" + totalAmount));
+                Intent intent = new Intent(Cart.this, Cart.class);
+                intent.putExtra("Total Price", String.valueOf(totalAmount)); // sending total amount to the next activity
                 startActivity(intent);
                 finish();
             }
         });
-
     }
+
+
+
 
     @Override
     protected void onStart() {
@@ -92,6 +94,8 @@ public class Cart extends AppCompatActivity {
                         //add total price of 1 product to total amount
 
                         totalAmount= totalPriceProduct + totalAmount;
+
+                        totalAmountInCart.setText(String.valueOf("Total Price =$" + totalAmount));
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override

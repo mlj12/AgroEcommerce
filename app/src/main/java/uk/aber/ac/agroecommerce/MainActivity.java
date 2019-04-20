@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                Intent i = new Intent(MainActivity.this, Register.class);
+                Intent i = new Intent(MainActivity.this, Home2.class);
 
                 startActivity(i);
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        }, 3*1000); // wait for 5 seconds
+        }, 1*1000); // wait for 5 seconds
 
 
     }
