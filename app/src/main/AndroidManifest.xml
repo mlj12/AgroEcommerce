@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".Chat"></activity>
+        <activity android:name=".SellerDashboard"></activity>
+        <activity android:name=".UserProductsOrder" />
+        <activity android:name=".ViewOrders" />
+        <activity android:name=".Chat" />
         <activity android:name=".ConfirmOrder" />
         <activity
             android:name=".Home2"

@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class Product_Category extends AppCompatActivity {
     private ImageView fruits,vegetables,seeds, wheat, meat,pesticide,equipment,dairy_product;
+    private Button viewOrdersbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class Product_Category extends AppCompatActivity {
         pesticide = (ImageView) findViewById(R.id.pesticide);
         seeds = (ImageView) findViewById(R.id.seed);
         wheat = (ImageView) findViewById(R.id.wheat);
+        viewOrdersbtn =(Button) findViewById(R.id.view_orders_btn);
+
 
 
         fruits.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +103,14 @@ public class Product_Category extends AppCompatActivity {
         });
 
 
+        viewOrdersbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new  Intent(Product_Category.this,ViewOrders.class);
+                startActivity(intent);
+            }
+        });
 
 
 

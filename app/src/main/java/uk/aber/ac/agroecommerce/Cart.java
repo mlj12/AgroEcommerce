@@ -28,7 +28,7 @@ public class Cart extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private Button proceedToCheckout;
+    private Button confirmorder_btn;
     private TextView totalAmountInCart;
     private DatabaseReference cartRef;
     private String uid;
@@ -45,17 +45,17 @@ public class Cart extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        proceedToCheckout = (Button) findViewById(R.id.proceed_to_checkout_btn);
+       confirmorder_btn = (Button) findViewById(R.id.confirm_order_btn);
         totalAmountInCart = (TextView) findViewById(R.id.cart_total_amount);
         cartRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View");
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        proceedToCheckout.setOnClickListener(new View.OnClickListener() {
+       confirmorder_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 //                totalAmountInCart.setText(String.valueOf("Total Price =$" + totalAmount));
-                Intent intent = new Intent(Cart.this, Cart.class);
+                Intent intent = new Intent(Cart.this, ConfirmOrder.class);
                 intent.putExtra("Total Price", String.valueOf(totalAmount)); // sending total amount to the next activity
                 startActivity(intent);
                 finish();
@@ -129,8 +129,8 @@ public class Cart extends AppCompatActivity {
                                                if(task.isSuccessful()){
 
                                                    Toast.makeText(Cart.this, "Item Removed", Toast.LENGTH_SHORT).show();
-                                                   Intent intent = new Intent (Cart.this, Home2.class);
-                                                   startActivity(intent);
+//                                                   Intent intent = new Intent (Cart.this, Cart.class);
+//                                                   startActivity(intent);
                                                }
                                            }
                                        });

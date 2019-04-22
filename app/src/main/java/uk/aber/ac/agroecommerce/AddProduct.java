@@ -45,6 +45,7 @@ public class AddProduct extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private FirebaseAuth firebaseAuth;
     private String pid;
+    private String uid;
 
 
 
@@ -135,10 +136,10 @@ public class AddProduct extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product description...", Toast.LENGTH_SHORT).show();
         }
-//        else if (TextUtils.isEmpty(price))
-//        {
-//            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
-//        }
+        else if (TextUtils.isEmpty(String.valueOf(price)))
+        {
+            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
+        }
         else if (TextUtils.isEmpty(pName))
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
@@ -189,10 +190,10 @@ public class AddProduct extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd,mm,yyyy");
         saveCurrentDate = currentDate.format(calendar.getTime());
 
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
         saveCurrentTime = currentTime.format(calendar.getTime());
 
 
@@ -253,6 +254,8 @@ public class AddProduct extends AppCompatActivity {
     {
 
 
+        uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         HashMap<String, Object> productMap = new HashMap<>();
         productMap.put("pid", pid);
         productMap.put("date", saveCurrentDate);
@@ -262,8 +265,7 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("category", CategoryName);
         productMap.put("price", price);
         productMap.put("Quantity", quantity);
-
-        productMap.put("Name", pName);
+        productMap.put("uid",uid);
 
 
         productsRef.child(pid).updateChildren(productMap)

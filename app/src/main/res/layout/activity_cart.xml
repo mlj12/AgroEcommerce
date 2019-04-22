@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
       android:background="@color/colorAccent"
-        android:layout_above="@id/proceed_to_checkout_btn"
+        android:layout_above="@id/confirm_order_btn"
 
         >
 
@@ -51,7 +51,7 @@
            android:layout_height="wrap_content"
            android:text="Total ="
            android:textSize="20sp"
-        android:background="@color/colorAccent"
+
            android:textColor="@color/white"
            android:textAlignment="gravity"
            android:gravity="top"/>
@@ -65,16 +65,17 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/back_to_home"
         android:layout_above="@+id/relativeLayout_1"
+
         >
 
     </android.support.v7.widget.RecyclerView>
 
     <Button
-        android:id="@+id/proceed_to_checkout_btn"
+        android:id="@+id/confirm_order_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        android:text="Proceed to checkout"
+        android:text="Confirm Order"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"
         android:layout_marginTop="10dp"

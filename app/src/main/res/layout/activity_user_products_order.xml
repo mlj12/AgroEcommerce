@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProductsOrder">
+
+    <RelativeLayout
+
+        android:id="@+id/relativeLayout_3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:layout_above="@id/confirm_order_btn"
+
+        >
+
+        <TextView
+
+            android:id="@+id/seller_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Products Ordered"
+            android:textSize="20sp"
+
+            android:textColor="@color/white"
+            android:textAlignment="gravity"
+            android:gravity="top|center"/>
+
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/productOrderlist_seller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativeLayout_3"
+
+
+        >
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

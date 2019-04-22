@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SellerDashboard">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logo_display"
+        android:layout_centerHorizontal="true"
+        >
+
+
+
+
+    <TextView
+        android:id="@+id/dashboard_text_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Agro Trade Centre"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+
+
+        />
+
+
+
+    <ImageView
+
+        android:id="@+id/dashboard_app_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/logo_display">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/logo_display"
+        android:layout_marginTop="40dp"
+        >
+
+    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:id="@+id/row_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo_display"
+        android:layout_margin="15dp"
+
+      >
+
+    <Button
+        android:id="@+id/dashboard_viewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:backgroundTint="@color/blue"
+        android:padding="40dp"
+        android:text="View my Products"
+        android:layout_margin="30dp"
+
+
+
+        />
+
+
+        <Button
+
+            android:id="@+id/dashboard_viewOrders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttons"
+            android:backgroundTint="@color/pink"
+            android:padding="40dp"
+            android:text="View Orders"
+            android:layout_below="@id/dashboard_viewProducts"
+            android:layout_margin="30dp"
+            />
+
+
+
+
+
+    <Button
+
+        android:id="@+id/dashboard_manageProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manage Products"
+        android:padding="40dp"
+        android:background="@drawable/buttons"
+        android:backgroundTint="@color/pink"
+        android:layout_below="@id/dashboard_viewOrders"
+        android:layout_margin="30dp"
+
+
+        />
+
+
+        <Button
+
+            android:id="@+id/dashboard_Home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go to Main app"
+            android:padding="40dp"
+            android:background="@drawable/buttons"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_below="@id/dashboard_manageProducts"
+            android:layout_margin="30dp"
+
+
+            />
+
+
+        <Button
+            android:id="@+id/dashboard_Signout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttons"
+            android:backgroundTint="@color/yellow"
+            android:padding="40dp"
+            android:text="Sign Out"
+            android:layout_below="@id/dashboard_Home"
+            android:layout_margin="30dp"
+
+
+            />
+
+
+    </RelativeLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

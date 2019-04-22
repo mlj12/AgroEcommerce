@@ -42,9 +42,8 @@ public class ProductDetail extends AppCompatActivity {
     private TextView productPrice, productDescription, productName;
     private String productID = "";
     private String uid;
-    private String saveCurrentDate, saveCurrentTime;
+    private String imageurl;
 
-    private String downloadImageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,51 +86,76 @@ public class ProductDetail extends AppCompatActivity {
 
     private void addingToCartList() {
 
-        String saveCurrentTime, saveCurrentDate;
+        final String saveCurrentTime, saveCurrentDate;
         final ProgressDialog progressDialog = ProgressDialog.show(ProductDetail.this, "Wait", "Adding to cart..", true);
 
 
         Calendar calForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("ddmm,yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd/mm/yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
-        saveCurrentTime = currentDate.format(calForDate.getTime());
+        saveCurrentTime = currentTime.format(calForDate.getTime());
 
         // creating instance for database
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
 
-        final HashMap<String, Object> cartMap = new HashMap<>();
 
-        cartMap.put("pid", productID);
-        cartMap.put("pname", productName.getText().toString());
-        cartMap.put("price", productPrice.getText().toString());
-        cartMap.put("description", productDescription.getText().toString());
-        cartMap.put("quantity", quantity_btn.getNumber());
-        cartMap.put("date", saveCurrentDate);
-        cartMap.put("time", saveCurrentTime);
+        final DatabaseReference imageRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
-
-        cartListRef.child("User View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        imageRef.child(productID).child("image").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    cartListRef.child("Seller View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            progressDialog.dismiss();
+                imageurl= dataSnapshot.getValue().toString();
 
-                            Toast.makeText(ProductDetail.this, "Product has been added to cart", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ProductDetail.this, ProductDetail.class);
-                            startActivity(intent);
+                final HashMap<String, Object> cartMap = new HashMap<>();
+
+                cartMap.put("pid", productID);
+                cartMap.put("pname", productName.getText().toString());
+                cartMap.put("price", productPrice.getText().toString());
+                cartMap.put("description", productDescription.getText().toString());
+                cartMap.put("quantity", quantity_btn.getNumber());
+                cartMap.put("image", imageurl);
+                cartMap.put("date", saveCurrentDate);
+                cartMap.put("time", saveCurrentTime);
+
+
+                cartListRef.child("User View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                            cartListRef.child("Seller View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    //         progressDialog.dismiss();
+
+                                    Toast.makeText(ProductDetail.this, "Product has been added to cart", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(ProductDetail.this, Home2.class);
+                                    startActivity(intent);
+                                }
+                            });
+
                         }
-                    });
+                    }
+                });
 
-                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
+
+
+          //  System.out.print(imageurl);
+
 
 
     }
@@ -140,6 +164,9 @@ public class ProductDetail extends AppCompatActivity {
     private void getProductDetails(final String productID) {
 
         DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child("Products");
+
+
+
         productRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -153,6 +180,8 @@ public class ProductDetail extends AppCompatActivity {
                     productPrice.setText(String.valueOf(products.getPrice())); // Should convert int price from model to String.
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
+
+
 
                 }
             }
