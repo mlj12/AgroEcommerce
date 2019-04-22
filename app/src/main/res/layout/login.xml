@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".LogIn">
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/logo_login"
+    >
     <TextView
         android:id="@+id/text_logo"
         android:layout_width="wrap_content"
@@ -27,6 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo" />
+
+</RelativeLayout>
     <!-- Login progress -->
     <ProgressBar
         android:id="@+id/login_progress"
@@ -39,7 +45,9 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/logo_login"
+        >
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -87,14 +95,19 @@
 
             <Button
                 android:id="@+id/log_in_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttons"
-                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_marginTop="100dp"
                 android:text="Log In"
                 android:padding="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+
+                />
 
         </LinearLayout>
     </ScrollView>

@@ -13,59 +13,93 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import static com.google.firebase.database.FirebaseDatabase.getInstance;
 
 public class Chat extends AppCompatActivity {
 
 
-
     private FirebaseListAdapter<ChatMessage> adapter;
-   private FloatingActionButton send_btn;
-    private EditText inputMessage;
-
-    DatabaseReference chatref;
-    FirebaseAuth firebaseAuth;
-    private String uid;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        FloatingActionButton fab =
+                (FloatingActionButton) findViewById(R.id.fab);
 
-        send_btn =(FloatingActionButton) findViewById(R.id.send_message_btn);
-
-      uid= firebaseAuth.getCurrentUser().getEmail();
-
-        send_btn.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                EditText input = (EditText) findViewById(R.id.input);
 
-                EditText input = (EditText) findViewById(R.id.input_message);
+                // Read the input field and push a new instance
+                // of ChatMessage to the Firebase database
+                getInstance()
+                        .getReference()
+                        .push()
+                        .setValue(new ChatMessage(input.getText().toString(),
+                                FirebaseAuth.getInstance()
+                                        .getCurrentUser()
+                                        .getDisplayName())
+                        );
 
-              FirebaseDatabase.getInstance().getReference().push().setValue(new ChatMessage(input.getText().toString(),uid));
-
-
-
+                // Clear the input
                 input.setText("");
 
-
+                displayMessages();
             }
         });
 
 
-
-        //load content
-
-
-
     }
 
+  public void displayMessages(){
 
 
+    ListView listOfMessages = (ListView) findViewById(R.id.list_of_messages);
 
+
+        Query query = FirebaseDatabase.getInstance().getReference();
+        FirebaseListOptions<ChatMessage> options = new FirebaseListOptions.Builder<ChatMessage>()
+                .setQuery(query, ChatMessage.class)
+                .build();
+
+
+        adapter = new FirebaseListAdapter<ChatMessage>(options) {
+            @Override
+            protected void populateView(View v, ChatMessage model, int position) {
+
+                // Get references to the views of message.xml
+                    TextView messageText = (TextView) v.findViewById(R.id.message_text);
+                    TextView messageUser = (TextView) v.findViewById(R.id.message_user);
+                    TextView messageTime = (TextView) v.findViewById(R.id.message_time);
+
+                    // Set their text
+                    messageText.setText(model.getMessageText());
+                    messageUser.setText(model.getMessageUser());
+
+                    // Format the date before showing it
+                    messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+                            model.getMessageTime()));
+
+
+            }
+
+        };
+        listOfMessages.setAdapter(adapter);
+
+    }
 }
+
+
+
+
+
+

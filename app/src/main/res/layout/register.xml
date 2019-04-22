@@ -8,31 +8,39 @@
     android:orientation="vertical"
     >
 
-    <TextView
-        android:id="@+id/text_logo"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Agro Trade Centre"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/logo_register"
+        >
+        <TextView
+            android:id="@+id/text_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Agro Trade Centre"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
 
 
-        />
+            />
 
-    <ImageView
+        <ImageView
 
-        android:id="@+id/app_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo" />
+            android:id="@+id/app_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo" />
 
+    </RelativeLayout>
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/logo_register"
+        >
 
         <LinearLayout
             android:id="@+id/signup_form"
@@ -105,10 +113,14 @@
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttons"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="100dp"
                 android:text="Register"
                 android:padding="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:backgroundTint="@color/colorPrimary"
+                />
 
             <Button
                 android:id="@+id/log_in_button_registerpage"
@@ -120,6 +132,9 @@
                 android:text="Log in"
                 android:padding="10dp"
                 android:textStyle="bold"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:backgroundTint="@color/colorPrimary"
 
 
                 />

@@ -6,38 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".Account">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar_settings"
+
+
+
+    <RelativeLayout
+
+        android:id="@+id/settings_back"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         android:background="@color/colorPrimary">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_settings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/close_settings_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_back_black_24dp"
 
-                <TextView
-                    android:id="@+id/close_settings_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_arrow_back_black_24dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true" />
+            />
 
-            </RelativeLayout>
 
-        </android.support.v7.widget.Toolbar>
 
-    </android.support.design.widget.AppBarLayout>
+    </RelativeLayout>
 
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/settings_back"
+        >
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/settings_back"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -46,7 +57,7 @@
         android:layout_height="130dp"
         android:src="@drawable/baseline_account_circle_white_18dp"
         android:background="@color/colorPrimary"
-        android:layout_below="@+id/app_bar_settings"
+
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         />
@@ -93,16 +104,24 @@
         android:hint="Address..."
         android:layout_margin="15dp"
         android:padding="10dp"
+        android:imeActionId="6"
+        android:imeOptions="actionUnspecified"
         />
 
     <Button
         android:id="@+id/update_account_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/settings_address"
         android:background="@drawable/buttons"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:text="Save" />
 
+    </RelativeLayout>
+
+</LinearLayout>
+
+    </ScrollView>
 </RelativeLayout>

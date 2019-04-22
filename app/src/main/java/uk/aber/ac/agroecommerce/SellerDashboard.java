@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SellerDashboard extends AppCompatActivity {
 
     private Button view_product_btn,view_orders_btn,manage_product_btn,home_btn,sign_out_btn;
@@ -64,7 +66,7 @@ public class SellerDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(SellerDashboard.this,MainActivity.class);
                 startActivity(intent);
             }
