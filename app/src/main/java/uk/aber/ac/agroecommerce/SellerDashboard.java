@@ -32,24 +32,24 @@ public class SellerDashboard extends AppCompatActivity {
            }
        });
 
-//       view_product_btn.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View v) {
-//
-//               Intent intent = new Intent(SellerDashboard.this,ViewOrders.class);
-//               startActivity(intent);
-//           }
-//       });
+       view_product_btn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
 
-//
-//        manage_product_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(SellerDashboard.this,ViewOrders.class);
-//                startActivity(intent);
-//            }
-//        });
+               Intent intent = new Intent(SellerDashboard.this,ViewSellerProducts.class);
+               startActivity(intent);
+           }
+       });
+
+
+        manage_product_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(SellerDashboard.this,Product_Category.class);
+                startActivity(intent);
+            }
+        });
 
 
 

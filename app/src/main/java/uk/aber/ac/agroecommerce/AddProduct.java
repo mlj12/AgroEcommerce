@@ -46,6 +46,7 @@ public class AddProduct extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private String pid;
     private String uid;
+    private DatabaseReference sellerRef;
 
 
 
@@ -55,11 +56,14 @@ public class AddProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_product);
 
+        uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         CategoryName = getIntent().getExtras().get("category").toString();
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-        //  pid = FirebaseAuth.getInstance().getUid();
+        sellerRef = FirebaseDatabase.getInstance().getReference().child("Seller").child(uid).child("Products");
+
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         pid = database.getReference("Products").push().getKey();
@@ -254,7 +258,6 @@ public class AddProduct extends AppCompatActivity {
     {
 
 
-        uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         HashMap<String, Object> productMap = new HashMap<>();
         productMap.put("pid", pid);
@@ -267,6 +270,8 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("Quantity", quantity);
         productMap.put("uid",uid);
 
+        sellerRef.child(pid).updateChildren(productMap);
+
 
         productsRef.child(pid).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -275,6 +280,8 @@ public class AddProduct extends AppCompatActivity {
                     {
                         if (task.isSuccessful())
                         {
+
+
                             Intent intent = new Intent(AddProduct.this,Home2.class);
                             startActivity(intent);
 

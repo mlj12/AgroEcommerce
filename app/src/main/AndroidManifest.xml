@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".SellerDashboard"></activity>
+        <activity android:name=".ViewSellerProducts"></activity>
+        <activity android:name=".SellerDashboard" />
         <activity android:name=".UserProductsOrder" />
         <activity android:name=".ViewOrders" />
         <activity android:name=".Chat" />

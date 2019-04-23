@@ -27,6 +27,7 @@ public class ConfirmOrder extends AppCompatActivity {
     private Button confirmOrderbtn;
     private String totalAmountconfirmed = "";
     private String uid;
+    private DatabaseReference cartRef;
 
 
     @Override
@@ -98,7 +99,7 @@ public class ConfirmOrder extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
         String saveCurrentTime = currentDate.format(calForDate.getTime());
 
-        final DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(uid);
+        final DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(uid).child("Details");
 
         HashMap<String,Object> orderMap = new HashMap<>();
 
@@ -112,6 +113,8 @@ public class ConfirmOrder extends AppCompatActivity {
         orderMap.put("state", "Not Shipped");
         orderMap.put("date", saveCurrentDate);
         orderMap.put("time", saveCurrentTime);
+
+
 
         orderRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -144,6 +147,7 @@ public class ConfirmOrder extends AppCompatActivity {
                 }
             }
         });
+
 
 
     }
