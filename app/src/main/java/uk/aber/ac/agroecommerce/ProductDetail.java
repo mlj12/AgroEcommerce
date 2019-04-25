@@ -100,6 +100,8 @@ public class ProductDetail extends AppCompatActivity {
         // creating instance for database
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
+        final DatabaseReference orderlistRef=  FirebaseDatabase.getInstance().getReference().child("Orders").child(uid);
+
 
 
         final DatabaseReference imageRef = FirebaseDatabase.getInstance().getReference().child("Products");
@@ -137,6 +139,7 @@ public class ProductDetail extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                             });
+
 
                         }
                     }

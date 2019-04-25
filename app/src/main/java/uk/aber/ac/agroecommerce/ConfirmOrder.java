@@ -14,8 +14,11 @@ import com.google.android.gms.common.data.DataBufferObserverSet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,6 +31,9 @@ public class ConfirmOrder extends AppCompatActivity {
     private String totalAmountconfirmed = "";
     private String uid;
     private DatabaseReference cartRef;
+    private DatabaseReference orderRef;
+    private String order_id;
+
 
 
     @Override
@@ -39,7 +45,9 @@ public class ConfirmOrder extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_order);
 
 
+
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    orderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(uid).child("Details");
 
         confirmOrderbtn = (Button) findViewById(R.id.proceed_to_checkout_btn);
         ship_name_txt = (EditText) findViewById(R.id.shipment_name);
@@ -92,14 +100,15 @@ public class ConfirmOrder extends AppCompatActivity {
 
     private void confirmOrder() {
 
-        Calendar calForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("ddmm,yyyy");
-        String saveCurrentDate = currentDate.format(calForDate.getTime());
+        Calendar calendar = Calendar.getInstance();
+
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd,mm,yyyy");
+        String saveCurrentDate = currentDate.format(calendar.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
-        String saveCurrentTime = currentDate.format(calForDate.getTime());
+       String saveCurrentTime = currentTime.format(calendar.getTime());
 
-        final DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(uid).child("Details");
+      order_id = FirebaseDatabase.getInstance().getReference("Orderscc ").push().getKey();
 
         HashMap<String,Object> orderMap = new HashMap<>();
 
@@ -113,6 +122,7 @@ public class ConfirmOrder extends AppCompatActivity {
         orderMap.put("state", "Not Shipped");
         orderMap.put("date", saveCurrentDate);
         orderMap.put("time", saveCurrentTime);
+
 
 
 
@@ -144,6 +154,8 @@ public class ConfirmOrder extends AppCompatActivity {
 
                         }
                     });
+
+
                 }
             }
         });
@@ -151,4 +163,6 @@ public class ConfirmOrder extends AppCompatActivity {
 
 
     }
+
+
 }

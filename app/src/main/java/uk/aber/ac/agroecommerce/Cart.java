@@ -2,12 +2,14 @@ package uk.aber.ac.agroecommerce;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +22,17 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Cart extends AppCompatActivity {
 
@@ -33,6 +43,8 @@ public class Cart extends AppCompatActivity {
     private DatabaseReference cartRef;
     private String uid;
     private int totalAmount =0;
+    private DatabaseReference pOrderRef;
+    private String productID,productName,productPrice,productDescription,quantity_btn,imageurl,saveCurrentDate,saveCurrentTime;
 
 
 
@@ -54,7 +66,9 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                totalAmountInCart.setText(String.valueOf("Total Price =$" + totalAmount));
+
+                productOrder();
+
                 Intent intent = new Intent(Cart.this, ConfirmOrder.class);
                 intent.putExtra("Total Price", String.valueOf(totalAmount)); // sending total amount to the next activity
                 startActivity(intent);
@@ -63,7 +77,49 @@ public class Cart extends AppCompatActivity {
         });
     }
 
+    private void productOrder() {
 
+
+
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String pid = FirebaseDatabase.getInstance().getReference("Orders").child(uid).push().getKey();
+        pOrderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(uid).child(pid);
+
+
+        cartRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Map<String, Object> orderlist = (HashMap<String, Object>) dataSnapshot.getValue();
+
+                List<Object> values = (List<Object>) orderlist.values();
+
+                System.out.print(values);
+
+
+
+
+                final HashMap<String, Object> cartMap = new HashMap<>();
+
+                cartMap.put("pid", productID);
+                cartMap.put("pname", productName);
+                cartMap.put("price", productPrice);
+                cartMap.put("description", productDescription);
+                cartMap.put("quantity", quantity_btn);
+                cartMap.put("image", imageurl);
+                cartMap.put("date", saveCurrentDate);
+                cartMap.put("time", saveCurrentTime);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+    }
 
 
     @Override
@@ -161,4 +217,6 @@ public class Cart extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
+
 }

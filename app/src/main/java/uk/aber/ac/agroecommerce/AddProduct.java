@@ -264,6 +264,7 @@ public class AddProduct extends AppCompatActivity {
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description",description);
+        productMap.put("name",pName);
         productMap.put("image", downloadImageUrl);
         productMap.put("category", CategoryName);
         productMap.put("price", price);

@@ -13,4 +13,12 @@
     <string name="title_activity_splash">Splash</string>
     <string name="title_activity_home2">Agro Trade Centre</string>
 
+    <string-array name="sortby">
+
+        <item>Recently Added</item>
+        <item>Price Low to High</item>
+
+
+    </string-array>
+
 </resources>
