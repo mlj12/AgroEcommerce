@@ -74,7 +74,7 @@ public class AddProduct extends AppCompatActivity {
         product_description = (EditText) findViewById(R.id.p_description);
         product_quantity = (EditText) findViewById(R.id.available_inventory);
         product_price = (EditText) findViewById(R.id.product_price);
-        product_shipping = (EditText) findViewById(R.id.shipping);
+
 
         loadingBar = new ProgressDialog(this);
 

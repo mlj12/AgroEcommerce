@@ -45,9 +45,8 @@ public class ConfirmOrder extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_order);
 
 
-
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    orderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(uid).child("Details");
+    orderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(uid);
 
         confirmOrderbtn = (Button) findViewById(R.id.proceed_to_checkout_btn);
         ship_name_txt = (EditText) findViewById(R.id.shipment_name);
@@ -102,13 +101,13 @@ public class ConfirmOrder extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        SimpleDateFormat currentDate = new SimpleDateFormat("dd,mm,yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd/mm/yyyy");
         String saveCurrentDate = currentDate.format(calendar.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
        String saveCurrentTime = currentTime.format(calendar.getTime());
 
-      order_id = FirebaseDatabase.getInstance().getReference("Orderscc ").push().getKey();
+
 
         HashMap<String,Object> orderMap = new HashMap<>();
 
@@ -143,7 +142,7 @@ public class ConfirmOrder extends AppCompatActivity {
 
                             if(task.isSuccessful()){
 
-                                Toast.makeText(ConfirmOrder.this, "Your order has been placed sucuccessfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ConfirmOrder.this, "Your order has been placed successfully", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(ConfirmOrder.this,Home2.class);
 

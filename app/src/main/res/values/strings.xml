@@ -21,4 +21,11 @@
 
     </string-array>
 
+    <string-array name="type">
+
+        <item>Buyer</item>
+        <item>Seller</item>
+
+
+    </string-array>
 </resources>

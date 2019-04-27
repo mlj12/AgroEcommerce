@@ -16,19 +16,13 @@
         android:background="@color/colorAccent">
 
 
-        <ImageView
-            android:id="@+id/back_to_home_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_back_black_24dp"
-
-            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Back to Home"
+            android:text="My Cart "
             android:textColor="@color/white"
-            android:layout_toRightOf="@id/back_to_home_btn"
+            android:layout_centerHorizontal="true"
+
             />
 
 
@@ -74,7 +68,7 @@
         android:id="@+id/confirm_order_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@drawable/buttons"
         android:text="Confirm Order"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"

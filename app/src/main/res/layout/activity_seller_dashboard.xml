@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/buttons"
-            android:backgroundTint="@color/pink"
+            android:backgroundTint="@color/colorPrimary"
             android:padding="40dp"
             android:text="View Orders"
             android:layout_below="@id/dashboard_viewProducts"
@@ -123,7 +123,7 @@
             android:padding="40dp"
             android:background="@drawable/buttons"
             android:backgroundTint="@color/colorAccent"
-            android:layout_below="@id/dashboard_manageProducts"
+            android:layout_below="@id/dashboard_AddProduct"
             android:layout_margin="30dp"
 
 
@@ -144,6 +144,19 @@
 
             />
 
+        <Button
+            android:id="@+id/dashboard_AddProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttons"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:padding="40dp"
+            android:text="Add a Product"
+            android:layout_below="@id/dashboard_manageProducts"
+            android:layout_margin="30dp"
+
+
+            />
 
     </RelativeLayout>
 

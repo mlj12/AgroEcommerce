@@ -67,8 +67,6 @@ public class Cart extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                productOrder();
-
                 Intent intent = new Intent(Cart.this, ConfirmOrder.class);
                 intent.putExtra("Total Price", String.valueOf(totalAmount)); // sending total amount to the next activity
                 startActivity(intent);
@@ -77,49 +75,6 @@ public class Cart extends AppCompatActivity {
         });
     }
 
-    private void productOrder() {
-
-
-
-        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String pid = FirebaseDatabase.getInstance().getReference("Orders").child(uid).push().getKey();
-        pOrderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(uid).child(pid);
-
-
-        cartRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Map<String, Object> orderlist = (HashMap<String, Object>) dataSnapshot.getValue();
-
-                List<Object> values = (List<Object>) orderlist.values();
-
-                System.out.print(values);
-
-
-
-
-                final HashMap<String, Object> cartMap = new HashMap<>();
-
-                cartMap.put("pid", productID);
-                cartMap.put("pname", productName);
-                cartMap.put("price", productPrice);
-                cartMap.put("description", productDescription);
-                cartMap.put("quantity", quantity_btn);
-                cartMap.put("image", imageurl);
-                cartMap.put("date", saveCurrentDate);
-                cartMap.put("time", saveCurrentTime);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-    }
 
 
     @Override
@@ -217,6 +172,8 @@ public class Cart extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
+
 
 
 }

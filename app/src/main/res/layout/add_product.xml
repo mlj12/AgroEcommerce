@@ -7,110 +7,149 @@
     tools:context=".AddProduct">
 
     <ImageView
-        android:layout_width="200dp"
         android:id="@+id/import_picture"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/baseline_insert_photo_white_18dp"/>
+        android:background="@drawable/baseline_insert_photo_white_18dp"
+        android:backgroundTint="@color/grey"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="20dp"
+        />
 
-    <EditText
-        android:id="@+id/p_name"
+
+
+    <ScrollView
+        android:id="@+id/addProduct_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        android:padding="10dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/import_picture"
-        android:inputType="text"
-        android:layout_marginTop="50dp"
 
-        />
-
-    <EditText
-        android:id="@+id/p_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Description"
-        android:layout_below="@id/p_name"
-        android:inputType="text"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:maxLines="5"
-        android:singleLine="false"
-
-        />
-
-    <LinearLayout
-        android:id="@+id/product_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/p_description"
-        android:weightSum="2"
         >
 
-        <EditText
-            android:id="@+id/available_inventory"
+        <LinearLayout
+            android:id="@+id/addProduct_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Quantity"
-            android:layout_below="@id/p_description"
-            android:inputType="number"
-            android:layout_marginTop="10dp"
-
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:singleLine="true"
-
-
-            />
-
-        <EditText
-            android:id="@+id/product_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/p_description"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/available_inventory"
-            android:hint="Price"
-            android:layout_weight="1"
-            android:inputType="number"
-
-            android:padding="10dp"
-
-
-            android:singleLine="true"
-
-
-            />
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:paddingTop="150dp"
+            android:paddingBottom="150dp"
 
 
 
-    </LinearLayout>
+            >
 
-    <EditText
-        android:id="@+id/shipping"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Shipping Details"
-        android:layout_below="@id/product_container"
-        android:inputType="text"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:maxLines="5"
-        android:singleLine="false"
 
-        />
 
-    <Button
 
-        android:id="@+id/add_product_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttons"
-        android:layout_below="@id/product_container"
-        android:layout_marginTop="100dp"
-        android:text="Add a product"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        />
+                <EditText
+                    android:id="@+id/p_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:padding="10dp"
+                    android:layout_below="@id/import_picture"
+                    android:inputType="text"
+                    android:layout_marginTop="50dp"
+
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/p_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    android:layout_below="@id/p_name"
+                    android:inputType="text"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:maxLines="5"
+                    android:singleLine="false"
+
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/available_inventory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Quantity"
+                    android:layout_below="@id/p_description"
+                    android:inputType="number"
+                    android:layout_marginTop="10dp"
+
+                    android:padding="10dp"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+
+
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/product_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/p_description"
+                    android:layout_toRightOf="@id/available_inventory"
+                    android:hint="Price"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:singleLine="true"
+
+
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <Button
+
+                android:id="@+id/add_product_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttons"
+                android:layout_below="@id/addProduct_linear"
+                android:layout_marginTop="100dp"
+                android:text="Add a product"
+                android:layout_marginLeft="30dp"
+                android:textColor="@color/white"
+                android:layout_marginRight="30dp"
+
+                />
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
 </RelativeLayout>

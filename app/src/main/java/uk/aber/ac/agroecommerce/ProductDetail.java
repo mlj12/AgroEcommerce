@@ -100,7 +100,7 @@ public class ProductDetail extends AppCompatActivity {
         // creating instance for database
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
-        final DatabaseReference orderlistRef=  FirebaseDatabase.getInstance().getReference().child("Orders").child(uid);
+
 
 
 
@@ -114,6 +114,7 @@ public class ProductDetail extends AppCompatActivity {
 
                 final HashMap<String, Object> cartMap = new HashMap<>();
 
+
                 cartMap.put("pid", productID);
                 cartMap.put("pname", productName.getText().toString());
                 cartMap.put("price", productPrice.getText().toString());
@@ -122,6 +123,8 @@ public class ProductDetail extends AppCompatActivity {
                 cartMap.put("image", imageurl);
                 cartMap.put("date", saveCurrentDate);
                 cartMap.put("time", saveCurrentTime);
+
+
 
 
                 cartListRef.child("User View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {

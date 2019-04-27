@@ -25,7 +25,7 @@ public class Product_Category extends AppCompatActivity {
         pesticide = (ImageView) findViewById(R.id.pesticide);
         seeds = (ImageView) findViewById(R.id.seed);
         wheat = (ImageView) findViewById(R.id.wheat);
-        viewOrdersbtn =(Button) findViewById(R.id.view_orders_btn);
+
 
 
 

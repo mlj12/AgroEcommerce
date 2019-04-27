@@ -8,132 +8,165 @@
 
     <RelativeLayout
 
-        android:id="@+id/back_to_order"
+       android:id="@+id/shipping_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@color/colorAccent">
+        android:background="@color/colorPrimary">
 
 
-        <ImageView
-            android:id="@+id/back_to_order_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_back_black_24dp"
-
-            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:text="Back to Order"
+            android:id="@+id/txt_confirm_shipment_details"
+            android:text="Enter your shipping details"
+            android:textSize="16sp"
             android:textColor="@color/white"
-            android:layout_toRightOf="@id/back_to_order_btn"
-            />
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
 
+            />
 
 
     </RelativeLayout>
 
 
-    <TextView
-        android:layout_below="@id/back_to_order"
+    <ScrollView
+        android:layout_below="@id/shipping_bar"
+        android:id="@+id/shipping_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txt_confirm_shipment_details"
-        android:text="Enter your shipping details"
-        android:textSize="16sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAlignment="center"
-        android:layout_marginTop="10dp"
+        android:layout_height="match_parent"
 
-        />
+        >
 
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/shipment_name"
-        android:layout_marginTop="100dp"
-        android:hint="Name"
-        android:textSize="16dp"
-        android:layout_below="@id/txt_confirm_shipment_details"
-
-
-        />
-
-
-
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/shipment_phone"
-        android:layout_marginTop="20dp"
-        android:hint="Phone number"
-        android:textSize="16dp"
-        android:inputType="phone"
-        android:layout_below="@+id/shipment_name"
-
-
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/shipment_adress"
-        android:layout_marginTop="20dp"
-        android:hint="Street address"
-        android:textSize="16dp"
-        android:layout_below="@id/shipment_phone"
-
-
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/shipment_city"
-        android:layout_marginTop="20dp"
-        android:hint="City"
-        android:textSize="16dp"
-        android:layout_below="@id/shipment_adress"
-
-
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/shipment_postalcode"
-        android:layout_marginTop="20dp"
-        android:hint="Postal code"
-        android:textSize="16dp"
-        android:layout_below="@+id/shipment_city"
-
-
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/shipment_country"
-        android:layout_marginTop="20dp"
-        android:hint="Country"
-        android:textSize="16dp"
-        android:layout_below="@+id/shipment_postalcode"
-
-
-        />
-
-
-        <Button
-            android:id="@+id/proceed_to_checkout_btn"
+        <LinearLayout
+            android:id="@+id/shipping_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Proceed to checkout"
-            android:background="@color/colorAccent"
-            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:paddingTop="50dp"
+            android:paddingBottom="150dp"
 
-            />
+
+            >
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/shipment_name"
+                    android:layout_marginTop="20dp"
+                    android:hint="Name"
+                    android:textSize="16dp"
+                    android:layout_below="@id/txt_confirm_shipment_details"
+
+
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/shipment_phone"
+                    android:layout_marginTop="20dp"
+                    android:hint="Phone number"
+                    android:textSize="16dp"
+                    android:inputType="phone"
+                    android:layout_below="@+id/shipment_name"
+
+
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/shipment_adress"
+                    android:layout_marginTop="20dp"
+                    android:hint="Address"
+                    android:textSize="16dp"
+                    android:layout_below="@id/shipment_phone"
+
+
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/shipment_postalcode"
+                    android:layout_marginTop="20dp"
+                    android:hint="Postal code"
+                    android:textSize="16dp"
+                    android:layout_below="@+id/shipment_city"
+
+
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/shipment_country"
+                    android:layout_marginTop="20dp"
+                    android:hint="Country"
+                    android:textSize="16dp"
+                    android:layout_below="@+id/shipment_postalcode"
+                    android:layout_marginBottom="50dp"
+
+
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/proceed_to_checkout_btn"
+                android:layout_width="match_parent"
+                android:layout_margin="50dp"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Proceed to checkout"
+                android:background="@drawable/buttons"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/white"
+
+
+
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

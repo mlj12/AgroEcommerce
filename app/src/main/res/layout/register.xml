@@ -105,7 +105,7 @@
 
             </android.support.design.widget.TextInputLayout>
 
-
+>
 
             <Button
                 android:id="@+id/register_button"
@@ -113,31 +113,19 @@
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttons"
-                android:layout_marginTop="100dp"
+
                 android:text="Register"
                 android:padding="10dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:backgroundTint="@color/colorPrimary"
-                />
 
-            <Button
-                android:id="@+id/log_in_button_registerpage"
-                android:layout_width="match_parent"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/buttons"
-                android:layout_marginTop="16dp"
-                android:text="Log in"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
                 android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginRight="30dp"
 
 
                 />
+
 
         </LinearLayout>
     </ScrollView>

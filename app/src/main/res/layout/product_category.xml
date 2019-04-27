@@ -122,6 +122,7 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:id="@+id/linear4_category_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -133,6 +134,7 @@
         android:layout_marginTop="45dp">
 
         <ImageView
+
             android:id="@+id/pesticide"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -153,13 +155,5 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/buttons"
-        android:text="View Orders"
-        android:id="@+id/view_orders_btn"
 
-        />
 </RelativeLayout>

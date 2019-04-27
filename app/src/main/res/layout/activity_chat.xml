@@ -4,53 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Chat">
+    <RelativeLayout
 
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_send_black_24dp"
-        android:id="@+id/fab"
-        android:tint="@android:color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        app:fabSize="mini"
-        android:layout_alignParentRight="true" />
-
-    <android.support.design.widget.TextInputLayout
+        android:id="@+id/chat_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/fab"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true">
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
 
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:hint="Input"
-          android:id="@+id/input"
-          />
-    </android.support.design.widget.TextInputLayout>
+        >
 
-    <ListView
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@id/fab"
-        android:dividerHeight="16dp"
-        android:divider="@android:color/transparent"
-        android:id="@+id/list_of_messages"
-        android:layout_marginBottom="16dp"
-        android:layout_alignParentLeft="true" />
+        android:layout_below="@id/chat_bar_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-1dp"
+        android:layout_marginBottom="0dp"
+        android:layout_above="@id/linear_layout_1"
 
-  </RelativeLayout>
 
+        />
+
+
+<LinearLayout
+    android:id="@+id/linear_layout_1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:layout_alignParentBottom="true"
+
+    >
+
+
+    <EditText
+
+        android:id="@+id/send_message_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Write your message"
+        android:layout_weight="2"
+        />
+
+<Button
+    android:id="@+id/send_message_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Send"
+    android:background="@drawable/buttons"
+    android:backgroundTint="@color/colorAccent"
+    android:layout_margin="5dp"
+    android:layout_weight="1"
+    />
+
+
+</LinearLayout>
+
+
+</RelativeLayout>
