@@ -91,7 +91,7 @@ public class ProductDetail extends AppCompatActivity {
 
 
         Calendar calForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd/m/yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
@@ -117,7 +117,7 @@ public class ProductDetail extends AppCompatActivity {
 
                 cartMap.put("pid", productID);
                 cartMap.put("pname", productName.getText().toString());
-                cartMap.put("price", productPrice.getText().toString());
+                cartMap.put("price",productPrice.getText().toString());
                 cartMap.put("description", productDescription.getText().toString());
                 cartMap.put("quantity", quantity_btn.getNumber());
                 cartMap.put("image", imageurl);

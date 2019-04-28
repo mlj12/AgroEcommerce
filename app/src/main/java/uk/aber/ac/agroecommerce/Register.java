@@ -47,17 +47,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
 
-
-                Intent i = new Intent(Register.this, LogIn.class);
-                startActivity(i);
-
-            }
-        });
 
     }
     public void createAccount() {

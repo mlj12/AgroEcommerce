@@ -74,10 +74,7 @@ public class ConfirmOrder extends AppCompatActivity {
 
          Toast.makeText(this, "Enter your full name", Toast.LENGTH_SHORT).show();
      }
-     else if (TextUtils.isEmpty(ship_city_txt.getText().toString())){
 
-            Toast.makeText(this, "Enter your City ", Toast.LENGTH_SHORT).show();
-        }
         else if (TextUtils.isEmpty(ship_address_txt.getText().toString())){
 
             Toast.makeText(this, "Enter your street address", Toast.LENGTH_SHORT).show();
@@ -115,7 +112,7 @@ public class ConfirmOrder extends AppCompatActivity {
         orderMap.put("personName", ship_name_txt.getText().toString());
         orderMap.put("phoneNumber", ship_phone_txt.getText().toString());
         orderMap.put("streetAddress", ship_address_txt.getText().toString());
-        orderMap.put("city", ship_city_txt.getText().toString());
+
         orderMap.put("country", ship_country_txt.getText().toString());
         orderMap.put("postalCode", ship_postal_txt.getText().toString());
         orderMap.put("state", "Not Shipped");

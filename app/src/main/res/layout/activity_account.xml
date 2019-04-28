@@ -9,54 +9,22 @@
 
 
 
-    <RelativeLayout
 
-        android:id="@+id/settings_back"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@color/colorPrimary">
+        android:id="@+id/upload_pic_layout"
 
-
-        <ImageView
-            android:id="@+id/close_settings_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_back_black_24dp"
-
-            />
-
-
-
-    </RelativeLayout>
-
-
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/settings_back"
         >
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/settings_back"
-    >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/settings_profile_image"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:src="@drawable/baseline_account_circle_white_18dp"
-        android:background="@color/colorPrimary"
+        android:src="@drawable/ic_account_circle_black_24dp"
+
 
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
@@ -76,55 +44,87 @@
         android:layout_centerHorizontal="true"
         />
 
-    <EditText
-        android:id="@+id/settings_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_image_change_btn"
-        android:hint="Email..."
-        android:layout_margin="15dp"
-        android:padding="10dp"
-        />
-
-    <EditText
-        android:id="@+id/settings_full_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/settings_email"
-        android:hint="Full Name..."
-        android:layout_margin="15dp"
-        android:padding="10dp"
-        />
-
-    <EditText
-        android:id="@+id/settings_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/settings_full_name"
-        android:hint="Address..."
-        android:layout_margin="15dp"
-        android:padding="10dp"
-        android:imeActionId="6"
-        android:imeOptions="actionUnspecified"
-        />
-
-    <Button
-        android:id="@+id/update_account_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/settings_address"
-        android:background="@drawable/buttons"
-        android:backgroundTint="@color/colorPrimary"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="30dp"
-        android:text="Save" />
-
     </RelativeLayout>
 
-</LinearLayout>
 
+
+
+
+
+    <ScrollView
+        android:id="@+id/account_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/upload_pic_layout"
+        android:layout_marginTop="10dp"
+
+
+      >
+
+        <LinearLayout
+            android:id="@+id/account_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+
+
+
+            >
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/settings_full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/settings_email"
+                    android:hint="Name"
+                    android:layout_margin="15dp"
+                    android:padding="10dp"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/settings_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/settings_full_name"
+                    android:hint="Address"
+                    android:layout_margin="15dp"
+                    android:padding="10dp"
+                    android:imeActionId="6"
+                    android:imeOptions="actionUnspecified"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+
+            <Button
+                android:id="@+id/update_account_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/settings_address"
+                android:background="@drawable/buttons"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginRight="30dp"
+                android:text="Save" />
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

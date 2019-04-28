@@ -126,7 +126,6 @@ public class AddProduct extends AppCompatActivity {
         description = product_description.getText().toString();
         price = Integer.valueOf(product_price.getText().toString());
         pName = product_name.getText().toString();
-        shipping =product_shipping.getText().toString();
 
         quantity = product_quantity.getText().toString();
 
@@ -148,10 +147,7 @@ public class AddProduct extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(shipping))
-        {
-            Toast.makeText(this, "Please write product shipping...", Toast.LENGTH_SHORT).show();
-        }
+
 
         else if (TextUtils.isEmpty(quantity))
         {
@@ -160,23 +156,7 @@ public class AddProduct extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product description...", Toast.LENGTH_SHORT).show();
         }
-//        else if (TextUtils.isEmpty(price))
-//        {
-//            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
-//        }
-        else if (TextUtils.isEmpty(pName))
-        {
-            Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(shipping))
-        {
-            Toast.makeText(this, "Please write product shipping...", Toast.LENGTH_SHORT).show();
-        }
 
-        else if (TextUtils.isEmpty(quantity))
-        {
-            Toast.makeText(this, "Please write product quantity...", Toast.LENGTH_SHORT).show();
-        }
         else
         {
             StoreProductInformation();

@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        >
 
 
         <TextView
@@ -32,21 +33,22 @@
 
 
     <ScrollView
-        android:layout_below="@id/shipping_bar"
         android:id="@+id/shipping_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/shipping_bar"
 
-        >
+       >
 
         <LinearLayout
             android:id="@+id/shipping_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="center"
+            android:orientation="vertical"
             android:paddingTop="50dp"
             android:paddingBottom="150dp"
+            android:layout_marginTop="100dp"
 
 
             >
@@ -56,13 +58,13 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/shipment_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/shipment_name"
+                    android:layout_below="@id/txt_confirm_shipment_details"
                     android:layout_marginTop="20dp"
                     android:hint="Name"
                     android:textSize="16dp"
-                    android:layout_below="@id/txt_confirm_shipment_details"
 
 
                     />
@@ -75,14 +77,14 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/shipment_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/shipment_phone"
+                    android:layout_below="@+id/shipment_name"
                     android:layout_marginTop="20dp"
                     android:hint="Phone number"
-                    android:textSize="16dp"
                     android:inputType="phone"
-                    android:layout_below="@+id/shipment_name"
+                    android:textSize="16dp"
 
 
                     />
@@ -90,25 +92,23 @@
             </android.support.design.widget.TextInputLayout>
 
 
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/shipment_adress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/shipment_adress"
+                    android:layout_below="@id/shipment_phone"
                     android:layout_marginTop="20dp"
                     android:hint="Address"
                     android:textSize="16dp"
-                    android:layout_below="@id/shipment_phone"
 
 
                     />
 
             </android.support.design.widget.TextInputLayout>
-
 
 
             <android.support.design.widget.TextInputLayout
@@ -117,13 +117,13 @@
 
 
                 <EditText
+                    android:id="@+id/shipment_postalcode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/shipment_postalcode"
+                    android:layout_below="@+id/shipment_city"
                     android:layout_marginTop="20dp"
                     android:hint="Postal code"
                     android:textSize="16dp"
-                    android:layout_below="@+id/shipment_city"
 
 
                     />
@@ -134,14 +134,14 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/shipment_country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/shipment_country"
+                    android:layout_below="@+id/shipment_postalcode"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="50dp"
                     android:hint="Country"
                     android:textSize="16dp"
-                    android:layout_below="@+id/shipment_postalcode"
-                    android:layout_marginBottom="50dp"
 
 
                     />
@@ -152,14 +152,13 @@
             <Button
                 android:id="@+id/proceed_to_checkout_btn"
                 android:layout_width="match_parent"
-                android:layout_margin="50dp"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="50dp"
+                android:background="@drawable/buttons"
                 android:padding="20dp"
                 android:text="Proceed to checkout"
-                android:background="@drawable/buttons"
-                android:layout_alignParentBottom="true"
                 android:textColor="@color/white"
-
 
 
                 />

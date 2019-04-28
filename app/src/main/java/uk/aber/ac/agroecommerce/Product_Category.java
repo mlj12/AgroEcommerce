@@ -103,14 +103,6 @@ public class Product_Category extends AppCompatActivity {
         });
 
 
-        viewOrdersbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new  Intent(Product_Category.this,ViewOrders.class);
-                startActivity(intent);
-            }
-        });
 
 
 

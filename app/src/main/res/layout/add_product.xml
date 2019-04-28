@@ -6,17 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AddProduct">
 
-    <ImageView
-        android:id="@+id/import_picture"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/baseline_insert_photo_white_18dp"
-        android:backgroundTint="@color/grey"
-        android:layout_gravity="center_vertical"
-        android:layout_marginBottom="20dp"
-        />
+
 
 
 
@@ -24,26 +14,37 @@
         android:id="@+id/addProduct_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/import_picture"
-
         >
 
+
         <LinearLayout
+
             android:id="@+id/addProduct_linear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_gravity="center"
-            android:paddingTop="150dp"
-            android:paddingBottom="150dp"
 
 
 
             >
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/import_picture"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
 
+        android:layout_gravity="center_vertical"
 
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+
+        android:background="@drawable/ic_image_black_24dp" />
+</RelativeLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

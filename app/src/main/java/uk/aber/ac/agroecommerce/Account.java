@@ -43,7 +43,8 @@ public class Account extends AppCompatActivity {
     private String name, email, address,picture,saveCurrentDate, saveCurrentTime,downloadImageUrl;
     private Button update_acc_btn;
     private ImageView userImage;
-    private EditText user_name, user_email, user_adress;
+    private EditText user_name, user_adress;
+    private TextView user_email;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private StorageReference userImagesRef;
@@ -71,7 +72,7 @@ public class Account extends AppCompatActivity {
        userImage = (ImageView) findViewById(R.id.settings_profile_image);
         user_name = (EditText) findViewById(R.id.settings_full_name);
         user_adress = (EditText) findViewById(R.id.settings_address);
-        user_email = (EditText) findViewById(R.id.settings_email);
+        user_email = (TextView) findViewById(R.id.settings_email);
 
         loadingBar = new ProgressDialog(this);
 
@@ -117,7 +118,7 @@ public class Account extends AppCompatActivity {
 
         name = user_name.getText().toString();
         address = user_adress.getText().toString();
-        email = user_email.getText().toString();
+
 
 
 
@@ -129,12 +130,12 @@ public class Account extends AppCompatActivity {
             Toast.makeText(this, "Please write your address...", Toast.LENGTH_SHORT).show();
 
         } else {
-            StoreProductInformation();
+            StoreAccountInformation();
         }
     }
 
 
-    private void StoreProductInformation() {
+    private void StoreAccountInformation() {
         loadingBar.setTitle("Updating Account");
         loadingBar.setMessage("Please wait while we are updating your account.");
         loadingBar.setCanceledOnTouchOutside(false);
@@ -195,13 +196,13 @@ public class Account extends AppCompatActivity {
 
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> userMap = new HashMap<>();
-        userMap.put("uid", uid);
+        userMap.put("email", uid);
         userMap.put("date", saveCurrentDate);
         userMap.put("time", saveCurrentTime);
         userMap.put("name", name);
         userMap.put("image", downloadImageUrl);
         userMap.put("address", address);
-        userMap.put("email", email);
+
 
 
 
@@ -213,10 +214,10 @@ public class Account extends AppCompatActivity {
                             Intent intent = new Intent(Account.this, MainActivity.class);
                             startActivity(intent);
 
-                            System.out.print(intent);
-
                             loadingBar.dismiss();
                             Toast.makeText(Account.this, "User is uploaded successfully.", Toast.LENGTH_SHORT).show();
+
+
                         } else {
                             loadingBar.dismiss();
                             String message = task.getException().toString();
