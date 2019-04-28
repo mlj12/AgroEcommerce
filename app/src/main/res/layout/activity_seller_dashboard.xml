@@ -98,22 +98,6 @@
 
 
 
-    <Button
-
-        android:id="@+id/dashboard_manageProducts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Manage Products"
-        android:padding="40dp"
-        android:background="@drawable/buttons"
-        android:backgroundTint="@color/pink"
-        android:layout_below="@id/dashboard_viewOrders"
-        android:layout_margin="30dp"
-
-
-        />
-
-
         <Button
 
             android:id="@+id/dashboard_Home"
@@ -149,10 +133,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/buttons"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/pink"
             android:padding="40dp"
             android:text="Add a Product"
-            android:layout_below="@id/dashboard_manageProducts"
+            android:layout_below="@id/dashboard_viewOrders"
             android:layout_margin="30dp"
 
 

@@ -77,6 +77,7 @@ public class Account extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
 
 
+
         userImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,6 +92,8 @@ public class Account extends AppCompatActivity {
                 ValidateUserData();
             }
         });
+
+
     }
 
 // Access to mobile's gallery
@@ -206,11 +209,13 @@ public class Account extends AppCompatActivity {
 
 
 
-        userRef.child(key).updateChildren(userMap)
+        userRef.child(uid).updateChildren(userMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+
+
                             Intent intent = new Intent(Account.this, MainActivity.class);
                             startActivity(intent);
 
@@ -226,4 +231,6 @@ public class Account extends AppCompatActivity {
                     }
                 });
     }
+
+
 }

@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SellerDashboard extends AppCompatActivity {
 
-    private Button view_product_btn,view_orders_btn,manage_product_btn,home_btn,sign_out_btn;
+    private Button view_product_btn,view_orders_btn,add_product_btn,home_btn,sign_out_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class SellerDashboard extends AppCompatActivity {
 
         view_orders_btn = (Button) findViewById(R.id.dashboard_viewOrders);
         view_product_btn = (Button) findViewById(R.id.dashboard_viewProducts);
-        manage_product_btn = (Button) findViewById(R.id.dashboard_manageProducts);
+        add_product_btn = (Button) findViewById(R.id.dashboard_AddProduct);
         home_btn = (Button) findViewById(R.id.dashboard_Home);
        sign_out_btn = (Button) findViewById(R.id.dashboard_Signout);
 
@@ -42,7 +42,7 @@ public class SellerDashboard extends AppCompatActivity {
        });
 
 
-        manage_product_btn.setOnClickListener(new View.OnClickListener() {
+        add_product_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
