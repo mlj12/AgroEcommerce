@@ -41,6 +41,7 @@ public class ProductDetail extends AppCompatActivity {
     private ElegantNumberButton quantity_btn;
     private TextView productPrice, productDescription, productName;
     private String productID = "";
+    private String pUID = "";
     private String uid;
     private String imageurl;
 
@@ -52,7 +53,9 @@ public class ProductDetail extends AppCompatActivity {
 
         productID = getIntent().getStringExtra("pid");
 
-        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        pUID = getIntent().getStringExtra("uid");
+
+
 
         add_to_cart_btn = (Button) findViewById(R.id.add_to_cartlist_btn);
         closeTextBtn = (ImageView) findViewById(R.id.close_settings_btn);
@@ -65,6 +68,7 @@ public class ProductDetail extends AppCompatActivity {
 
         //Retrieve data from product id
         getProductDetails(productID);
+        getProductDetails(pUID);
 
         add_to_cart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +95,7 @@ public class ProductDetail extends AppCompatActivity {
 
 
         Calendar calForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("dd/m/yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd/MM/yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
@@ -99,7 +103,7 @@ public class ProductDetail extends AppCompatActivity {
 
         // creating instance for database
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
 
@@ -116,6 +120,7 @@ public class ProductDetail extends AppCompatActivity {
 
 
                 cartMap.put("pid", productID);
+                cartMap.put("uid", pUID);
                 cartMap.put("pname", productName.getText().toString());
                 cartMap.put("price",productPrice.getText().toString());
                 cartMap.put("description", productDescription.getText().toString());

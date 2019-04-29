@@ -2,7 +2,7 @@ package uk.aber.ac.agroecommerce;
 
 public class Products
 {
-    private String Name, description, image, category, pid, date, time;
+    private String Name, description, image, category, pid, date, time,uid;
     private int price;
 
     public Products()
@@ -10,7 +10,7 @@ public class Products
 
     }
 
-    public Products(String Name, String description, int price, String image, String category, String pid, String date, String time) {
+    public Products(String Name, String description, int price, String image, String category, String pid, String date, String time,String uid) {
         this.Name = Name;
         this.description = description;
         this.price = price;
@@ -19,6 +19,7 @@ public class Products
         this.pid = pid;
         this.date = date;
         this.time = time;
+        this.uid =uid;
     }
 
     public int getPrice() {
@@ -84,5 +85,13 @@ public class Products
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
