@@ -21,7 +21,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity {
 
-  private  String sellerid = "";
+  private  String sellerid,sellerName = "";
     private DatabaseReference profileRef;
     private TextView txt_p_name,txt_p_address, txt_p_email;
     private ImageView profile_image;
@@ -32,6 +32,8 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
+
         txt_p_address = (TextView) findViewById(R.id.profile_adress);
         txt_p_name = (TextView) findViewById(R.id.profile_name);
         txt_p_email = (TextView) findViewById(R.id.profile_email);
@@ -39,18 +41,11 @@ public class Profile extends AppCompatActivity {
         chat_btn = (Button) findViewById(R.id.profile_chat_btn);
         sellerid= getIntent().getStringExtra("sellerId"); // get seller id from previous activity
 
-        chat_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(Profile.this,Chat.class);
-                intent.putExtra("sellerId", sellerid); //passing seller uid to chat activity
-                startActivity(intent);
-            }
-        });
 
 
         retrieveUserDetails();
+
+
     }
 
     public  void retrieveUserDetails(){
@@ -63,11 +58,26 @@ public class Profile extends AppCompatActivity {
 
                 if(dataSnapshot.exists()){
 
+
+
                     User users = dataSnapshot.getValue(User.class);
                     txt_p_name.setText(users.getName());
                     txt_p_address.setText(users.getAddress());
                     txt_p_email.setText(users.getEmail());
                     Picasso.get().load(users.getImage()).into(profile_image);
+
+                    sellerName = users.getName();
+
+                    chat_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Intent intent = new Intent(Profile.this,Chat.class);
+                            intent.putExtra("sellerId", sellerid);//passing seller uid to chat activity
+                            intent.putExtra("sellerName",sellerName);
+                            startActivity(intent);
+                        }
+                    });
 
                 }
             }
