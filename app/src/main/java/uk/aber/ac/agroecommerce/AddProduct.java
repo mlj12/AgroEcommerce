@@ -174,7 +174,7 @@ public class AddProduct extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        SimpleDateFormat currentDate = new SimpleDateFormat("dd,mm,yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd/M/yyyy");
         saveCurrentDate = currentDate.format(calendar.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");

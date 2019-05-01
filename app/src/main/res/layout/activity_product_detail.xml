@@ -72,8 +72,9 @@
 
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_image_black_24dp"
+           />
 
-            android:background="@drawable/ic_image_black_24dp" />
     </RelativeLayout>
 
 
@@ -83,10 +84,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/picture_layout"
         android:text="Product Name"
-        android:gravity="center"
+        android:gravity="left"
+
+        android:hint="Name"
         android:textSize="18dp"
         android:layout_marginTop="20dp"
-        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/black"
         />
 
     <TextView
@@ -95,9 +100,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/p_name"
         android:text="Product Price"
-        android:gravity="center"
+        android:gravity="left"
         android:textSize="18dp"
-        android:textColor="@color/colorPrimaryDark"
+        android:hint="Price"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/black"
         />
 
     <TextView
@@ -107,10 +115,27 @@
         android:layout_below="@+id/p_price"
         android:text="Product Description"
         android:layout_marginTop="2dp"
-        android:gravity="center"
-        android:textSize="16dp"
-        android:textColor="@color/colorPrimaryDark"
-        />
+        android:hint="Description"
+        android:gravity="left"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/contact_seller_btn"
+         android:layout_below="@id/p_description"
+         android:text="Contact Seller"
+         android:layout_marginLeft="10dp"
+         android:background="@drawable/seller_btn"
+         android:padding="10dp"
+         android:layout_marginTop="10dp"
+
+         />
+
     <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
         android:id="@+id/elegant_quantity_btn"
         android:layout_width="wrap_content"
@@ -125,7 +150,7 @@
 
     <Button
         android:id="@+id/add_to_cartlist_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add to cart"
         android:backgroundTint="@color/colorPrimary"
@@ -135,6 +160,8 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttons"
         android:textColor="@color/white"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         />
 
             </RelativeLayout>

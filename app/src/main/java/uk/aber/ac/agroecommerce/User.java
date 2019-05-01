@@ -3,17 +3,17 @@ package uk.aber.ac.agroecommerce;
 
 public class User {
 
-    private String name,location,type,picture,email,password;
+    private String name,address,image,email,password;
     public User() {
     }
 
-    public User(String name, String location, String picture, String email ) {
+    public User(String name, String address, String image, String email ) {
         this.name = name;
-        this.location = location;
-        this.type = type;
-        this.picture = picture;
+        this.address = address;
+
+        this.image = image;
         this.email = email;
-        this.password = password;
+
     }
 
     public String getName() {
@@ -24,28 +24,22 @@ public class User {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAddress(String address) {
+        this.address= address;
     }
 
-//    public String getType() {
-//        return type;
-//    }
-//
-//    public void setType(String type) {
-//        this.type = type;
-//    }
 
-    public String getPicture() {
-        return picture;
+
+    public String getImage() {
+        return image;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getEmail() {
@@ -55,12 +49,5 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
+
 }

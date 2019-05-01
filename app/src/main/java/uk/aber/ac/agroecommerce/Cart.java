@@ -59,7 +59,7 @@ public class Cart extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
        confirmorder_btn = (Button) findViewById(R.id.confirm_order_btn);
         totalAmountInCart = (TextView) findViewById(R.id.cart_total_amount);
-        cartRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View");
+        cartRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Cart List");
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
        confirmorder_btn.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +94,8 @@ public class Cart extends AppCompatActivity {
                     {
                         holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText(model.getDescription());
-                        holder.txtProductQuantity.setText(model.getQuantity());
-                        holder.txtProductPrice.setText("Price = " + model.getPrice() + "$");
+                        holder.txtProductQuantity.setText("Quantity: "+ model.getQuantity());
+                        holder.txtProductPrice.setText("Unit Price =$ "+model.getPrice());
                         Picasso.get().load(model.getImage()).into(holder.imageViewCart);
 
                         //calculate total price

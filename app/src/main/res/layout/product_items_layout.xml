@@ -53,7 +53,7 @@
             android:textAlignment="center"
             android:textSize="16dp"
             android:textColor="@color/colorPrimaryDark"
-            android:maxLength="50"
+            android:maxLength="20"
             />
 
     </RelativeLayout>

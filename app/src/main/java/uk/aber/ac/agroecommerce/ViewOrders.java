@@ -47,6 +47,8 @@ public class ViewOrders extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+
+
         FirebaseRecyclerOptions<OrdersModel> options =
                 new FirebaseRecyclerOptions.Builder<OrdersModel>()
                         .setQuery(orderRef, OrdersModel.class)
@@ -57,13 +59,13 @@ public class ViewOrders extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull OrderViewHolder holder, final int position, @NonNull final OrdersModel model) {
 
-                holder.txtOrderUserName.setText("Name: " + model.getPersonName() );
-                holder.txtOrderPhoneNumber.setText("Contact Number: " + model.getPhoneNumber() );
+                holder.txtOrderUserName.setText(model.getPersonName() );
+                holder.txtOrderPhoneNumber.setText( model.getPhoneNumber() );
                 holder.txtOrderCity.setText(model.getCity() );
                 holder.txtOrderPostalCode.setText(model.getPostalCode() );
                 holder.txtOrderAddress.setText(model.getStreetAddress() );
                 holder.txtOrderCountry.setText(model.getCountry() );
-                holder.txtTotalAmount.setText("Total Amount = $ "+model.getTotalAmount());
+                holder.txtTotalAmount.setText(model.getTotalAmount());
                 holder.txtOrderDate.setText(model.getDate());
                 holder.txtOrderTime.setText(model.getTime());
                 holder.viewProductOrderbtn.setOnClickListener(new View.OnClickListener() {

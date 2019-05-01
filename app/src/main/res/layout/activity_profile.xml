@@ -7,22 +7,21 @@
     tools:context=".Profile">
 
 
-    <ImageView
-        android:id="@+id/profile_pic"
-        android:layout_width="wrap_content"
-        android:padding="70dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/baseline_account_circle_white_18dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        />
+  <de.hdodenhof.circleimageview.CircleImageView
+      android:layout_width="130dp"
+      android:layout_height="130dp"
+      android:id="@+id/profile_image"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="30dp"
+        android:src="@drawable/ic_account_circle_black_24dp"
+      />
 
-    <EditText
+    <TextView
         android:id="@+id/profile_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your Name"
-        android:layout_below="@id/profile_pic"
+        android:hint="Name"
+        android:layout_below="@id/profile_image"
         android:inputType="number"
         android:layout_marginTop="30dp"
         android:padding="10dp"
@@ -32,11 +31,11 @@
 
         />
 
-    <EditText
+    <TextView
         android:id="@+id/profile_adress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your adress"
+        android:hint="Address"
         android:layout_below="@id/profile_name"
         android:inputType="number"
         android:layout_marginTop="10dp"
@@ -48,13 +47,14 @@
         />
 
 
-    <EditText
-        android:id="@+id/user_email_adress"
+    <TextView
+        android:id="@+id/profile_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_adress"
-        android:hint="Email Adress"
+        android:hint="Email"
         android:layout_marginTop="10dp"
+        android:padding="10dp"
 
 
         />
@@ -62,13 +62,16 @@
 
     <Button
 
-        android:id="@+id/add_user_btn"
+        android:id="@+id/profile_chat_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/buttons"
         android:layout_below="@id/profile_adress"
         android:layout_marginTop="100dp"
-        android:text="Update details"
+        android:text="Chat with seller"
+        android:textColor="@color/white"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
 
         />
 

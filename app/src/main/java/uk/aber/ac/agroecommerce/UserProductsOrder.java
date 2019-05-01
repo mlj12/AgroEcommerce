@@ -18,9 +18,13 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
@@ -30,7 +34,7 @@ public class UserProductsOrder extends AppCompatActivity {
    private RecyclerView.LayoutManager layoutManager;
    private DatabaseReference cartlistref,productRef;
    private String userId ="";
-   private Query q;
+   private Query sellerID;
 
 
     @Override
@@ -40,13 +44,11 @@ public class UserProductsOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_products_order);
 
-        userId = FirebaseAuth.getInstance().getUid();
-       cartlistref = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Seller View").child(userId).child("Products");
+      String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+       cartlistref = FirebaseDatabase.getInstance().getReference().child("Seller Orders").child(uid);
 
 
-
-
-       q = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Seller View").child(userId).child("Products").orderByChild("uid").equalTo(userId);
 
 
         productorderedlist = findViewById(R.id.productOrderlist_seller);
@@ -54,7 +56,7 @@ public class UserProductsOrder extends AppCompatActivity {
        productorderedlist.setLayoutManager(layoutManager);
 
 
-       userId = getIntent().getStringExtra("uid");
+       userId = getIntent().getStringExtra("uid"); // id of buyer who passed an order.
 
 
 
@@ -64,8 +66,11 @@ public class UserProductsOrder extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+
+
+
         FirebaseRecyclerOptions<CartModel> options = new  FirebaseRecyclerOptions.Builder<CartModel>()
-                .setQuery(q,CartModel.class).build();
+                .setQuery(cartlistref,CartModel.class).build();
 
 
         FirebaseRecyclerAdapter<CartModel, CartViewHolder> adapter =
@@ -96,4 +101,6 @@ public class UserProductsOrder extends AppCompatActivity {
 
 
     }
-}
+
+
+        }

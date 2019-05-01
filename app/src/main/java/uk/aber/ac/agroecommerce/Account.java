@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,15 +45,14 @@ public class Account extends AppCompatActivity {
     private Button update_acc_btn;
     private ImageView userImage;
     private EditText user_name, user_adress;
-    private TextView user_email;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private StorageReference userImagesRef;
     private DatabaseReference userRef;
     private ProgressDialog loadingBar;
-    private FirebaseAuth firebaseAuth;
+
     private String uid;
-    private String key;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +61,20 @@ public class Account extends AppCompatActivity {
 
 
         //CategoryName = getIntent().getExtras().get("category").toString();
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         userImagesRef = FirebaseStorage.getInstance().getReference().child("User Images");
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        uid = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        key = database.getReference("Users").push().getKey();
+
 
         update_acc_btn = (Button) findViewById(R.id.update_account_btn);
        userImage = (ImageView) findViewById(R.id.settings_profile_image);
         user_name = (EditText) findViewById(R.id.settings_full_name);
         user_adress = (EditText) findViewById(R.id.settings_address);
-        user_email = (TextView) findViewById(R.id.settings_email);
+
 
         loadingBar = new ProgressDialog(this);
 
@@ -122,6 +124,9 @@ public class Account extends AppCompatActivity {
         name = user_name.getText().toString();
         address = user_adress.getText().toString();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        email = user.getEmail();
+
 
 
 
@@ -146,7 +151,8 @@ public class Account extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd/M/yyyy");
+        saveCurrentDate = currentDate.format(calendar.getTime());
 
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
@@ -199,7 +205,7 @@ public class Account extends AppCompatActivity {
 
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> userMap = new HashMap<>();
-        userMap.put("email", uid);
+        userMap.put("email",email );
         userMap.put("date", saveCurrentDate);
         userMap.put("time", saveCurrentTime);
         userMap.put("name", name);
@@ -216,7 +222,7 @@ public class Account extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
 
-                            Intent intent = new Intent(Account.this, MainActivity.class);
+                            Intent intent = new Intent(Account.this, Home2.class);
                             startActivity(intent);
 
                             loadingBar.dismiss();

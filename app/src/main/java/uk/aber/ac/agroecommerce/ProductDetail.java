@@ -35,7 +35,7 @@ import java.util.HashMap;
 
 public class ProductDetail extends AppCompatActivity {
 
-    private Button add_to_cart_btn;
+    private Button add_to_cart_btn, contact_seller_btn;
     private ImageView closeTextBtn;
     private ImageView productImage;
     private ElegantNumberButton quantity_btn;
@@ -58,6 +58,7 @@ public class ProductDetail extends AppCompatActivity {
 
 
         add_to_cart_btn = (Button) findViewById(R.id.add_to_cartlist_btn);
+        contact_seller_btn = (Button) findViewById(R.id.contact_seller_btn);
         closeTextBtn = (ImageView) findViewById(R.id.close_settings_btn);
         productImage = (ImageView) findViewById(R.id.p_image);
         quantity_btn = (ElegantNumberButton) findViewById(R.id.elegant_quantity_btn);
@@ -67,8 +68,8 @@ public class ProductDetail extends AppCompatActivity {
 
 
         //Retrieve data from product id
-        getProductDetails(productID);
-        getProductDetails(pUID);
+        getProductDetails(productID); //product id
+        getProductDetails(pUID); // seller id
 
         add_to_cart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +85,16 @@ public class ProductDetail extends AppCompatActivity {
                 finish();
             }
         });
+
+        contact_seller_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ProductDetail.this,Profile.class);
+                intent.putExtra("sellerId", pUID);
+                startActivity(intent);
+            }
+        });
     }
 
     // When clicking on add to cart button, adding the items in the cart list.
@@ -95,7 +106,7 @@ public class ProductDetail extends AppCompatActivity {
 
 
         Calendar calForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd/M/yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
@@ -103,6 +114,7 @@ public class ProductDetail extends AppCompatActivity {
 
         // creating instance for database
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+        final DatabaseReference sellerOrderRef = FirebaseDatabase.getInstance().getReference().child("Seller Orders");
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
@@ -132,12 +144,12 @@ public class ProductDetail extends AppCompatActivity {
 
 
 
-                cartListRef.child("User View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                cartListRef.child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
 
-                            cartListRef.child("Seller View").child(uid).child("Products").child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            sellerOrderRef.child(pUID).child(productID).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     //         progressDialog.dismiss();
@@ -188,7 +200,7 @@ public class ProductDetail extends AppCompatActivity {
 
                     Products products = dataSnapshot.getValue(Products.class);
                     productName.setText(products.getName());
-                    productPrice.setText(String.valueOf(products.getPrice())); // Should convert int price from model to String.
+                    productPrice.setText( String.valueOf(products.getPrice())); // Should convert int price from model to String.
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
 

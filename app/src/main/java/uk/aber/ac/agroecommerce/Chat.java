@@ -13,12 +13,14 @@ public class Chat extends AppCompatActivity {
     private EditText user_message_txt;
     private RecyclerView messages_list;
     private String messageSenderId;
+    private  String sellerid = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        sellerid= getIntent().getStringExtra("sellerId"); // get value of seller id
         send_message_btn = (Button) findViewById(R.id.send_message_btn);
         user_message_txt = (EditText) findViewById(R.id.send_message_text);
         messages_list = (RecyclerView) findViewById(R.id.recycler_view_chat);
